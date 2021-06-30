@@ -279,6 +279,7 @@ public class AMap2DView implements PlatformView, MethodChannel.MethodCallHandler
                         builder.append("\"provinceName\": \"");builder.append(item.getProvinceName());builder.append("\",");
                         builder.append("\"title\": \"");builder.append(item.getTitle());builder.append("\",");
                         builder.append("\"adName\": \"");builder.append(item.getAdName());builder.append("\",");
+                        builder.append("\"address\": \"");builder.append(item.getSnippet());builder.append("\",");
                         builder.append("\"provinceCode\": \"");builder.append(item.getProvinceCode());builder.append("\",");
                         builder.append("\"latitude\": \"");builder.append(item.getLatLonPoint().getLatitude());builder.append("\",");
                         builder.append("\"longitude\": \"");builder.append(item.getLatLonPoint().getLongitude());builder.append("\"");

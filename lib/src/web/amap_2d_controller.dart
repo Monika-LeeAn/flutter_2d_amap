@@ -114,6 +114,7 @@ class AMap2DWebController extends AMap2DController {
               provinceName: poi.pname,
               title: poi.name,
               adName: poi.adname,
+              address: poi.address,
               provinceCode: poi.pcode,
               latitude: poi.location.getLat().toString(),
               longitude: poi.location.getLng().toString(),
