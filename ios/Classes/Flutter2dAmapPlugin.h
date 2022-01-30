@@ -2,3 +2,5 @@
 
 @interface Flutter2dAmapPlugin : NSObject<FlutterPlugin>
 @end
+
+

@@ -1,5 +1,3 @@
-
-
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -8,13 +6,13 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_2d_amap/flutter_2d_amap.dart';
 import 'package:flutter_2d_amap/src/mobile/amap_2d_controller.dart';
 
-
 class AMap2DViewState extends State<AMap2DView> {
-
-  final Completer<AMap2DMobileController> _controller = Completer<AMap2DMobileController>();
+  final Completer<AMap2DMobileController> _controller =
+      Completer<AMap2DMobileController>();
 
   void _onPlatformViewCreated(int id) {
-    final AMap2DMobileController controller = AMap2DMobileController(id, widget);
+    final AMap2DMobileController controller =
+        AMap2DMobileController(id, widget);
     _controller.complete(controller);
     if (widget.onAMap2DViewCreated != null) {
       widget.onAMap2DViewCreated!(controller);
@@ -32,13 +30,14 @@ class AMap2DViewState extends State<AMap2DView> {
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       return UiKitView(
-        viewType: 'plugins.weilu/flutter_2d_amap',
+        viewType: 'plugins.zhangyu/flutter_2d_multiple_annotation_uiview',
         onPlatformViewCreated: _onPlatformViewCreated,
         creationParams: _CreationParams.fromWidget(widget).toMap(),
         creationParamsCodec: const StandardMessageCodec(),
       );
     }
-    return Text('$defaultTargetPlatform is not yet supported by the flutter_2d_amap plugin');
+    return Text(
+        '$defaultTargetPlatform is not yet supported by the flutter_2d_amap plugin');
   }
 }
 
