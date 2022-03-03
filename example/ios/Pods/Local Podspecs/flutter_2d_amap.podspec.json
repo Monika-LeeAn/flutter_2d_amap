@@ -1,0 +1,40 @@
+{
+  "name": "flutter_2d_amap",
+  "version": "0.0.2",
+  "summary": "A new Flutter plugin.",
+  "description": "A new Flutter plugin.",
+  "homepage": "https://github.com/simplezhli",
+  "license": {
+    "file": "../LICENSE"
+  },
+  "authors": {
+    "weilu": "a05111993@163.com"
+  },
+  "source": {
+    "path": "."
+  },
+  "source_files": "Classes/**/*",
+  "public_header_files": "Classes/**/*.h",
+  "dependencies": {
+    "Flutter": [
+
+    ],
+    "AMap2DMap": [
+      "5.6.1"
+    ],
+    "AMapSearch": [
+      "7.9.0"
+    ],
+    "AMapLocation": [
+      "2.8.0"
+    ]
+  },
+  "static_framework": true,
+  "platforms": {
+    "ios": "9.0"
+  },
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES",
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64 i386"
+  }
+}

@@ -1,0 +1,1 @@
+../../../../.symlinks/plugins/flutter_2d_amap/ios/Classes/Flutter2dAmapPlugin.h
