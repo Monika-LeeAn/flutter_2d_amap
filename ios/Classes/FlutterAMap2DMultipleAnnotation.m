@@ -116,6 +116,8 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
         [_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
         [self.gpsButton setSelected:YES];
     }
+
+
 }
 
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
