@@ -4,4 +4,7 @@ abstract class AMap2DMultipleAnnotationController {
 
   ///获取用户当前定位的方法
   Future<void> location();
+
+  ///设置标注集合
+  Future<void> setAnnomations(List entities, String level);
 }
