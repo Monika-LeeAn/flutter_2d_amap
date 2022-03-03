@@ -17,7 +17,7 @@ class AMap2DMobileMultipleAnnotationState
   void _onPlatformViewCreated(int id) {
     print('iOS视图创建完成1, 准备controller');
     final AMap2DMobileMultipleAnnotationController controller =
-        AMap2DMobileMultipleAnnotationController.customInit(id);
+        AMap2DMobileMultipleAnnotationController.customInit(id, widget);
 
     ///  注释1:
     ///  void complete([FutureOr<T>? value]);
@@ -32,6 +32,11 @@ class AMap2DMobileMultipleAnnotationState
       print('iOS视图创建完成4, widget.onAMap2DViewCreated!(controller)');
       widget.onAMap2DViewCreated!(controller);
     }
+
+    // if (widget.onAmap2DViewRatioChanged != null) {
+    //   print('iOS视图创建完成5, widget.onAmap2DViewRatioChanged!(controller)');
+    //   widget.onAmap2DViewRatioChanged!(controller);
+    // }
   }
 
   @override

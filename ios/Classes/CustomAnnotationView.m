@@ -55,6 +55,8 @@
     self.nameLabel.text = name;
 }
 
+
+
 - (UIImage *)portrait
 {
     return self.portraitImageView.image;
@@ -152,7 +154,7 @@
         self.nameLabel.textAlignment    = NSTextAlignmentCenter;
         self.nameLabel.textColor        = [UIColor whiteColor];
         self.nameLabel.font             = [UIFont systemFontOfSize:15.f];
-        [self addSubview:self.nameLabel];
+//        [self addSubview:self.nameLabel];
     }
     
     return self;
@@ -175,6 +177,119 @@
 }
 
 #pragma mark - Override
+
+
+- (void)setModelDictionry:(NSDictionary *)modelDictionry {
+    _modelDictionry= modelDictionry;
+//    _nameLabel.text = [[modelDictionry valueForKey:@"merchantCount"] stringValue];
+//    _nameLabel.text =  @"我是中国人";
+//    int temp = [[modelDictionry valueForKey:@"merchantCount"] intValue];
+//    self.itemCount = [NSNumber numberWithInt:temp];
+    
+    
+    self.nameLabel.text = @"新疆维吾尔自治区";
+    self.countLabel.text = @"经销商:50家";
+    
+}
+
+- (void)setItemCount:(NSNumber *)itemCount{
+//    _itemCount = itemCount;
+//    self.nameLabel.text = self.itemCount.stringValue;
+//    int fix = (int)(itemCount.intValue / 50) ;
+//    if(fix > 20) {fix = 40;}
+//    self.bounds = CGRectMake(0.f, 0.f, 50 + fix, 50 + fix);
+//    self.nameLabel.frame = CGRectMake(  0,10,50 + fix,50 + fix - 20);
+//    self.layer.cornerRadius = (50 + fix) / 2;
+//    self.alpha = 0.6 + fix * 0.02;
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    [self setSelected:selected animated:NO];
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    if (self.selected == selected)
+    {
+        return;
+    }
+
+    [super setSelected:selected animated:animated];
+}
+
+
+
+#pragma mark - Life Cycle
+
+- (id)initWithAnnotation:(id<MAAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
+    
+    if (self)
+    {
+        self.bounds = CGRectMake(0.f, 0.f, 50, 50);
+        self.backgroundColor = [UIColor systemTealColor];
+        self.alpha = 0.6;
+        self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(  0,
+                                                                   10,
+                                                                   100,
+                                                                   30)];
+        
+        self.nameLabel.backgroundColor  = [UIColor redColor];
+        self.nameLabel.textAlignment    = NSTextAlignmentCenter;
+        self.nameLabel.textColor        = [UIColor blackColor];
+        self.nameLabel.font             = [UIFont systemFontOfSize:12.f];
+        self.nameLabel.text = self.itemCount.stringValue;
+        self.nameLabel.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:self.nameLabel];
+        self.layer.cornerRadius = 25;
+        
+        self.countLabel = [[UILabel alloc] initWithFrame:CGRectMake(  0,
+                                                                   40,
+                                                                   50,
+                                                                   30)];
+        
+        self.countLabel.backgroundColor  = [UIColor cyanColor];
+        self.countLabel.textAlignment    = NSTextAlignmentCenter;
+        self.countLabel.textColor        = [UIColor blackColor];
+        self.countLabel.font             = [UIFont systemFontOfSize:12.f];
+        self.countLabel.text = self.itemCount.stringValue;
+        self.countLabel.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:self.countLabel];
+        self.layer.cornerRadius = 25;
+        
+    }
+    
+    return self;
+}
+
+@end
+
+
+
+@implementation CityAnnotationView
+
+
+#pragma mark - Handle Action
+
+- (void)btnAction
+{
+    CLLocationCoordinate2D coorinate = [self.annotation coordinate];
+    
+    NSLog(@"coordinate = {%f, %f}", coorinate.latitude, coorinate.longitude);
+}
+
+#pragma mark - Override
+
+
+- (void)setModelDictionry:(NSDictionary *)modelDictionry {
+    _modelDictionry= modelDictionry;
+//    _nameLabel.text = [[modelDictionry valueForKey:@"merchantCount"] stringValue];
+//    _nameLabel.text =  @"我是中国人";
+    int temp = [[modelDictionry valueForKey:@"merchantCount"] intValue];
+    self.itemCount = [NSNumber numberWithInt:temp];
+}
 
 - (void)setItemCount:(NSNumber *)itemCount{
     _itemCount = itemCount;
@@ -213,16 +328,8 @@
     if (self)
     {
         self.bounds = CGRectMake(0.f, 0.f, 50, 50);
-        
-        
         self.backgroundColor = [UIColor systemYellowColor];
         self.alpha = 0.6;
-        
-        /* Create portrait image view and add to view hierarchy. */
-//        self.portraitImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kHoriMargin, kVertMargin, kPortraitWidth, kPortraitHeight)];
-//        [self addSubview:self.portraitImageView];
-        
-        /* Create name label. */
         self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(  0,
                                                                    10,
                                                                    50,
@@ -241,7 +348,92 @@
     return self;
 }
 
+@end
 
 
+
+@implementation MerchantAnnotationView
+
+
+#pragma mark - Handle Action
+
+- (void)btnAction
+{
+    CLLocationCoordinate2D coorinate = [self.annotation coordinate];
+    
+    NSLog(@"coordinate = {%f, %f}", coorinate.latitude, coorinate.longitude);
+}
+
+#pragma mark - Override
+
+
+- (void)setModelDictionry:(NSDictionary *)modelDictionry {
+    _modelDictionry= modelDictionry;
+//    _nameLabel.text = [[modelDictionry valueForKey:@"merchantCount"] stringValue];
+//    _nameLabel.text =  @"我是中国人";
+    // int temp = [[modelDictionry valueForKey:@"name"] intValue];
+    // // self.itemCount = [NSNumber numberWithInt:temp];
+    //  self.nameLabel.text = self.itemCount.stringValue;
+
+        self.nameLabel.text = [modelDictionry valueForKey:@"name"];
+
+}
+
+- (void)setItemCount:(NSNumber *)itemCount{
+    _itemCount = itemCount;
+    self.nameLabel.text = self.itemCount.stringValue;
+    int fix = (int)(itemCount.intValue / 50) ;
+    if(fix > 20) {fix = 40;}
+    self.bounds = CGRectMake(0.f, 0.f, 50 + fix, 50 + fix);
+    self.nameLabel.frame = CGRectMake(  0,10,50 + fix,50 + fix - 20);
+    self.layer.cornerRadius = (50 + fix) / 2;
+    self.alpha = 0.6 + fix * 0.02;
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    [self setSelected:selected animated:NO];
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    if (self.selected == selected)
+    {
+        return;
+    }
+
+    [super setSelected:selected animated:animated];
+}
+
+
+
+#pragma mark - Life Cycle
+
+- (id)initWithAnnotation:(id<MAAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
+    
+    if (self)
+    {
+        self.bounds = CGRectMake(0.f, 0.f, 50, 50);
+        self.backgroundColor = [UIColor systemBrownColor];
+        self.alpha = 0.6;
+        self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(  0,
+                                                                   10,
+                                                                   50,
+                                                                   30)];
+        self.nameLabel.backgroundColor  = [UIColor clearColor];
+        self.nameLabel.textAlignment    = NSTextAlignmentCenter;
+        self.nameLabel.textColor        = [UIColor blackColor];
+        self.nameLabel.font             = [UIFont systemFontOfSize:12.f];
+        self.nameLabel.text = self.itemCount.stringValue;
+        self.nameLabel.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:self.nameLabel];
+        self.layer.cornerRadius = 25;
+        
+    }
+    
+    return self;
+}
 
 @end

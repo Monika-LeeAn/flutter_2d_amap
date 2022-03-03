@@ -15,7 +15,9 @@
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import "CustomAnnotationView.h"
-
+#import "ZYProvinceAnnotationView.h"
+#import "ZYCityAnnotationView.h"
+#import "ZYMerchantAnnotationView.h"
 #define kCalloutViewMargin          -8
 
 
@@ -27,6 +29,12 @@
 @property (strong, nonatomic) AMapSearchAPI *search;
 @property (nonatomic, strong) UIButton *gpsButton;
 @property (nonatomic, strong) NSMutableArray *annotations;
+
+@property (nonatomic, strong) NSNumber *startLevel;
+@property (nonatomic, strong) NSNumber *endLevel;
+
+@property (nonatomic, strong) NSMutableArray *flutterToMapAnnotationsModels;
+@property (nonatomic, copy) NSString *currentLevel;
 
 @end
 
@@ -48,6 +56,9 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
               binaryMessenger:(NSObject<FlutterBinaryMessenger>*)messenger {
     if ([super init]) {
 
+        _endLevel = [NSNumber numberWithInt:1];
+
+        
         _viewId = viewId;
         NSString* channelName = [NSString stringWithFormat:@"plugins.zhangyu/flutter_2d_multiple_annotation_%lld", viewId];
         _channel = [FlutterMethodChannel methodChannelWithName:channelName binaryMessenger:messenger];
@@ -62,6 +73,7 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
             _mapView = [[MAMapView alloc] initWithFrame:self.view.frame];
             _mapView.delegate = self;
             _mapView.maxZoomLevel = 18.0;
+            _mapView.minZoomLevel = 3;
             
             // 请求定位权限
             self.mannger =  [[CLLocationManager alloc] init];
@@ -78,15 +90,6 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
             [_mapView addSubview:self.gpsButton];
             self.gpsButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
             
-            
-            [self initAnnotations];
-
-    
-             [_mapView addAnnotations:self.annotations];
-            [_mapView showAnnotations:self.annotations edgePadding:UIEdgeInsetsMake(20, 20, 20, 80) animated:YES];
-
-
-
     }
     return self;
 }
@@ -97,59 +100,6 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
 }
  
 
-- (void)initCityAnnotations
-{
-    self.annotations = [NSMutableArray array];
-    
-    CLLocationCoordinate2D coordinates[10] = {
-        {30.992520, 100.336170},
-        {31.992520, 110.336170},
-        {32.998293, 120.352343},
-        {33.004087, 130.348904},
-        {34.001442, 140.353915},
-        {35.989105, 150.353915},
-        {36.989098, 160.360200},
-        {37.998439, 170.360201},
-        {38.979590, 90.324219},
-        {39.978234, 80.352792}};
-    
-    for (int i = 0; i < 10; ++i)
-    {
-        MAPointAnnotation *a1 = [[MAPointAnnotation alloc] init];
-        a1.coordinate = coordinates[i];
-        a1.title      = [NSString stringWithFormat:@"city: %d", i];
-        
-        [self.annotations addObject:a1];
-    }
-}
-
-
-- (void)initAnnotations
-{
-    self.annotations = [NSMutableArray array];
-    
-    CLLocationCoordinate2D coordinates[10] = {
-        {20.992520, 100.336170},
-        {22.992520, 110.336170},
-        {24.998293, 120.352343},
-        {26.004087, 130.348904},
-        {28.001442, 140.353915},
-        {30.989105, 150.353915},
-        {32.989098, 160.360200},
-        {34.998439, 170.360201},
-        {36.979590, 90.324219},
-        {38.978234, 80.352792}};
-    
-    for (int i = 0; i < 10; ++i)
-    {
-        MAPointAnnotation *a1 = [[MAPointAnnotation alloc] init];
-        a1.coordinate = coordinates[i];
-        a1.title      = [NSString stringWithFormat:@"province: %d", i];
-        
-        [self.annotations addObject:a1];
-    }
-}
-
 - (UIButton *)makeGPSButtonView {
     UIButton *ret = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     ret.backgroundColor = [UIColor whiteColor];
@@ -157,7 +107,6 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
     
     [ret setImage:[UIImage imageNamed:@"gpsStat1"] forState:UIControlStateNormal];
     [ret addTarget:self action:@selector(gpsAction) forControlEvents:UIControlEventTouchUpInside];
-    
     return ret;
 }
 
@@ -179,8 +128,6 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
             _mapView.showTraffic = FALSE;
             _mapView.compassOrigin= CGPointMake(_mapView.compassOrigin.x, 52); //设置指南针位置
             _mapView.scaleOrigin= CGPointMake(_mapView.scaleOrigin.x + 20, _mapView.frame.size.height - 30);  //设置比例尺位置
-
-            
 //            [AMapLocationManager updatePrivacyShow:1 privacyInfo:1];
 //            [AMapLocationManager updatePrivacyAgree:1];
             /// 初始化定位
@@ -203,65 +150,22 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
 - (void)mapView:(MAMapView *)mapView didSingleTappedAtCoordinate:(CLLocationCoordinate2D)coordinate {
     [self->_mapView setCenterCoordinate:coordinate animated:YES];
     [self drawMarkers:coordinate.latitude lon:coordinate.longitude];
-    [self searchPOI:coordinate.latitude lon:coordinate.longitude];
+//    [self searchPOI:coordinate.latitude lon:coordinate.longitude];
+    
+    
+    NSDictionary* arguments = @{
+                                @"lat" : [NSNumber numberWithDouble:_mapView.centerCoordinate.latitude],
+                                @"lng" : [NSNumber numberWithDouble:_mapView.centerCoordinate.longitude],
+                                @"ratioLevel": _endLevel,
+                                };
+    [_channel invokeMethod:@"ratioChanged" arguments:arguments];
 }
 
 //接收位置更新,实现AMapLocationManagerDelegate代理的amapLocationManager:didUpdateLocation方法，处理位置更新
 - (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location reGeocode:(AMapLocationReGeocode *)reGeocode{
-
     NSLog(@"iOS端调用 amapLocationManager:(AMapLocationManager *)manager didUpdateLocation");
-    // CLLocationCoordinate2D center;
-    // center.latitude = location.coordinate.latitude;
-    // center.longitude = location.coordinate.longitude;
-    // [_mapView setZoomLevel:17 animated: YES];
-    // [_mapView setCenterCoordinate:center animated:YES];
-    // [self.locationManager stopUpdatingLocation];
-    // [self searchPOI:location.coordinate.latitude lon:location.coordinate.longitude];
 }
 
-/* POI 搜索回调. */
-- (void)onPOISearchDone:(AMapPOISearchBaseRequest *)request response:(AMapPOISearchResponse *)response{
-    if (response.pois.count == 0) {
-        NSDictionary* arguments = @{@"poiSearchResult" : @"[]"};
-        
-        ///channel
-        ///[_channel invokeMethod:@"poiSearchResult" arguments:arguments];
-        return;
-    }
-    
-    //1. 初始化可变字符串，存放最终生成json字串
-    NSMutableString *jsonString = [[NSMutableString alloc] initWithString:@"["];
-    
-    [response.pois enumerateObjectsUsingBlock:^(AMapPOI *obj, NSUInteger idx, BOOL *stop) {
-        
-        if (idx == 0) {
-            CLLocationCoordinate2D center;
-            center.latitude = obj.location.latitude;
-            center.longitude = obj.location.longitude;
-            [self->_mapView setZoomLevel:17 animated: YES];
-            [self->_mapView setCenterCoordinate:center animated:YES];
-            [self drawMarkers:obj.location.latitude lon:obj.location.longitude];
-        }
-        //2. 遍历数组，取出键值对并按json格式存放
-        NSString *string  = [NSString stringWithFormat:@"{\"cityCode\":\"%@\",\"cityName\":\"%@\",\"provinceName\":\"%@\",\"title\":\"%@\",\"adName\":\"%@\",\"provinceCode\":\"%@\",\"latitude\":\"%f\",\"longitude\":\"%f\",\"address\":\"%@\"},", obj.citycode, obj.city, obj.province, obj.name, obj.district, obj.pcode, obj.location.latitude, obj.location.longitude, obj.address];
-
-        [jsonString appendString:string];
-        
-    }];
-    
-    // 3. 获取末尾逗号所在位置
-    NSUInteger location = [jsonString length] - 1;
-    
-    NSRange range = NSMakeRange(location, 1);
-    
-    // 4. 将末尾逗号换成结束的]
-    [jsonString replaceCharactersInRange:range withString:@"]"];
-    
-    NSDictionary* arguments = @{
-                                @"poiSearchResult" : jsonString
-                                };
-    ///[_channel invokeMethod:@"poiSearchResult" arguments:arguments];
-}
 
 //字典转Json
 - (NSString*)dictionaryToJson:(NSDictionary *)dic {
@@ -270,10 +174,7 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
-//- (UIView*)view {
-//    return _mapView;
-//}
-    
+
 //检查是否授予定位权限
 - (bool)hasPermission{
     CLAuthorizationStatus locationStatus =  [CLLocationManager authorizationStatus];
@@ -292,15 +193,6 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
 }
 
 - (void)searchPOI:(CGFloat)lat lon:(CGFloat)lon{
-    
-    // if (_isPoiSearch) {
-    //     AMapPOIAroundSearchRequest *request = [[AMapPOIAroundSearchRequest alloc] init];
-    //     request.types               = _types;
-    //     request.requireExtension    = YES;
-    //     request.offset              = 50;
-    //     request.location            = [AMapGeoPoint locationWithLatitude:lat longitude:lon];
-    //     [self.search AMapPOIAroundSearch:request];
-    // }
 }
 
 - (void)onMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
@@ -315,6 +207,8 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
             [self.search AMapPOIKeywordsSearch:request];
         }
     } else if ([[call method] isEqualToString:@"move"]) {
+
+        NSLog(@"iOS端收到了 FLutter端 发送的move方法");
         NSString* lat = [call arguments][@"lat"];
         NSString* lon = [call arguments][@"lon"];
         CLLocationCoordinate2D center;
@@ -324,13 +218,49 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
         [self drawMarkers:[lat doubleValue] lon:[lon doubleValue]];
     } else if ([[call method] isEqualToString:@"location"]) {
         [self.locationManager startUpdatingLocation];
+    } else if ([[call method] isEqualToString:@"setAnnomations"]){
+        [_mapView removeAnnotations:self.annotations];
+        NSLog(@"iOS端收到了 FLutter端 发送的setAnnomations方法");
+        
+        NSMutableArray *mArray = [call arguments][@"entities"];
+        NSString *customMapLevel= [call arguments][@"customMapLevel"];
+        
+        _currentLevel = customMapLevel;
+
+        self.flutterToMapAnnotationsModels = [mArray mutableCopy];
+        [self initAnnotations:mArray level:customMapLevel];
+        
+        [_mapView addAnnotations:self.annotations];
+        [_mapView showAnnotations:self.annotations  animated:YES];
+    
+    }
+}
+
+- (void)initAnnotations:(NSMutableArray *)annotationsFormFlutter level:(NSString *)customMapLevel
+{
+    self.annotations = [NSMutableArray array];
+        
+    for (int i = 0; i < annotationsFormFlutter.count; ++i)
+    {
+        MAPointAnnotation *a1 = [[MAPointAnnotation alloc] init];
+        double lat = [annotationsFormFlutter[i][@"latitude"] doubleValue];
+        double lng = [annotationsFormFlutter[i][@"longitude"] doubleValue];
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
+        a1.coordinate = coordinate;
+        if ([customMapLevel  isEqual: @"1"]){
+                a1.title      = [NSString stringWithFormat:@"province:%d", i];
+        } else if ([customMapLevel isEqual: @"2"]){
+                a1.title      = [NSString stringWithFormat:@"city:%d", i];
+        } else if ([customMapLevel isEqual: @"3"]){
+                a1.title      = [NSString stringWithFormat:@"merchant:%d", i];
+        }
+        [self.annotations addObject:a1];
     }
 }
 
 
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
-    BOOL isA = [annotation.title containsString:@"anno"];
     if( [annotation.title isEqualToString:@"用户点击位置"]) {
         static NSString *pointReuseIndetifier = @"pointReuseIndetifier";
         MAPinAnnotationView *annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndetifier];
@@ -344,71 +274,118 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
         annotationView.draggable                    = YES;
         annotationView.rightCalloutAccessoryView    = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         annotationView.pinColor                     = [self.annotations indexOfObject:annotation] % 3;
-        
         return annotationView;
     }else if ([annotation.title containsString:@"province"]){
-        
+        int thisIndex = [[annotation.title substringFromIndex:9] intValue];
         static NSString *customReuseIndetifier = @"customReuseIndetifier";
-        ProvinceAnnotationView *annotationView = (ProvinceAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+        if (![_currentLevel isEqualToString:@"1"]) {
+            ZYProvinceAnnotationView *annotationView = (ZYProvinceAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+            return annotationView;
+        }
+        ZYProvinceAnnotationView *annotationView = (ZYProvinceAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
         if (annotationView == nil)
         {
-            annotationView = [[ProvinceAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
+            annotationView = [[ZYProvinceAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
             // must set to NO, so we can show the custom callout view.
             annotationView.canShowCallout = NO;
             annotationView.draggable = YES;
             annotationView.calloutOffset = CGPointMake(0, -5);
         }
-        
-        annotationView.itemCount = [NSNumber numberWithInt:[self getRandomNumber:1 to:1000]];
-        
-//        annotationView.portrait = [UIImage imageNamed:@"hema"];
-//        annotationView.name     = @"省级视图";
-//        annotation.
+        annotationView.modelDictionry = self.flutterToMapAnnotationsModels[thisIndex];
         return annotationView;
     } else if ([annotation.title containsString:@"city"]){
         
-        static NSString *customReuseIndetifier = @"customReuseIndetifier";
-        CustomAnnotationView *annotationView = (CustomAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+        int thisIndex = [[annotation.title substringFromIndex:5] intValue];
+        static NSString *customReuseIndetifier = @"cityReuseIndetifier";
+        ZYCityAnnotationView *annotationView = (ZYCityAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+
+       if (![_currentLevel isEqualToString:@"2"]) {
+           ZYCityAnnotationView *annotationView = (ZYCityAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+            return annotationView;
+        }
         if (annotationView == nil)
         {
-            annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
-            // must set to NO, so we can show the custom callout view.
+            annotationView = [[ZYCityAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
             annotationView.canShowCallout = NO;
             annotationView.draggable = YES;
             annotationView.calloutOffset = CGPointMake(0, -5);
         }
-        annotationView.portrait = [UIImage imageNamed:@"hema"];
-        annotationView.name     = @"城市城市";
+        annotationView.modelDictionry = self.flutterToMapAnnotationsModels[thisIndex];
+        return annotationView;
+    } else if ([annotation.title containsString:@"merchant"]){
+        
+        int thisIndex = [[annotation.title substringFromIndex:9] intValue];
+        static NSString *customReuseIndetifier = @"merchantReuseIndetifier";
+        ZYMerchantAnnotationView *annotationView = (ZYMerchantAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+        
+        if (![_currentLevel isEqualToString:@"3"]) {
+            ZYMerchantAnnotationView *annotationView = (ZYMerchantAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+            return annotationView;
+        }
+        if (annotationView == nil)
+        {
+            annotationView = [[ZYMerchantAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
+            annotationView.canShowCallout = NO;
+            annotationView.draggable = YES;
+            annotationView.calloutOffset = CGPointMake(0, -5);
+        }
+        annotationView.modelDictionry = self.flutterToMapAnnotationsModels[thisIndex];
         return annotationView;
     }
-    
-    
     return nil;
 }
 
 
+
 - (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view
 {
-    /* Adjust the map center in order to show the callout view completely. */
     if ([view isKindOfClass:[CustomAnnotationView class]]) {
         CustomAnnotationView *cusView = (CustomAnnotationView *)view;
         CGRect frame = [cusView convertRect:cusView.calloutView.frame toView:_mapView];
-        
         frame = UIEdgeInsetsInsetRect(frame, UIEdgeInsetsMake(kCalloutViewMargin, kCalloutViewMargin, kCalloutViewMargin, kCalloutViewMargin));
         if (!CGRectContainsRect(_mapView.frame, frame))
         {
             /* Calculate the offset to make the callout view show up. */
             CGSize offset = [self offsetToContainRect:frame inRect:_mapView.frame];
-            
             CGPoint theCenter = _mapView.center;
             theCenter = CGPointMake(theCenter.x - offset.width, theCenter.y - offset.height);
-            
             CLLocationCoordinate2D coordinate = [_mapView convertPoint:theCenter toCoordinateFromView:_mapView];
-            
             [_mapView setCenterCoordinate:coordinate animated:YES];
         }
+    } else if ([view isKindOfClass:[ZYProvinceAnnotationView class]]) {
+        ZYProvinceAnnotationView *pView = (ZYProvinceAnnotationView*)view;
         
+        NSDictionary* arguments = @{
+                                    @"model" : pView.modelDictionry,
+                                    @"level": _currentLevel,
+                                    };
+        pView.disclosureBlock = ^{
+            [self->_mapView setCenterCoordinate:CLLocationCoordinate2DMake(view.annotation.coordinate.latitude + 0.1, view.annotation.coordinate.longitude + 0.1) animated:YES];
+        };
+        [_channel invokeMethod:@"didClickedAnnation" arguments:arguments];
+        
+    } else if ([view isKindOfClass:[ZYCityAnnotationView class]]) {
+        ZYCityAnnotationView *pView = (ZYCityAnnotationView*)view;
+        NSDictionary* arguments = @{
+                                    @"model" : pView.modelDictionry,
+                                    @"level": _currentLevel,
+                                    };
+        pView.disclosureBlock = ^{
+            [self->_mapView setCenterCoordinate:CLLocationCoordinate2DMake(view.annotation.coordinate.latitude + 0.1, view.annotation.coordinate.longitude + 0.1) animated:YES];
+        };
+        [_channel invokeMethod:@"didClickedAnnation" arguments:arguments];
+    }else if ([view isKindOfClass:[ZYMerchantAnnotationView class]]) {
+
+        ZYMerchantAnnotationView *pView = (ZYMerchantAnnotationView*)view;
+        NSDictionary* arguments = @{
+                                    @"model" : pView.modelDictionry,
+                                    @"level": _currentLevel,
+                                    };
+        [_channel invokeMethod:@"didClickedAnnation" arguments:arguments];
     }
+    
+    [_mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
+
 }
 
 - (CGSize)offsetToContainRect:(CGRect)innerRect inRect:(CGRect)outerRect
@@ -430,7 +407,15 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
     
     if (wasUserAction) {
         NSLog(@"查看缩放 将要开始");
-        NSLog(@"%f -- %f -- %f", _mapView.zoomLevel, _mapView.minZoomLevel, _mapView.maxZoomLevel);
+        NSLog(@"%e -- %e -- %e", _mapView.zoomLevel, _mapView.minZoomLevel, _mapView.maxZoomLevel);
+    }
+    
+    if (_mapView.zoomLevel <= 6) {
+        _startLevel = [NSNumber numberWithInt:1];
+    } else if (_mapView.zoomLevel > 6 && _mapView.zoomLevel < 12) {
+        _startLevel = [NSNumber numberWithInt:2];
+    } else if (_mapView.zoomLevel >= 12) {
+        _startLevel = [NSNumber numberWithInt:3];
     }
 }
 
@@ -451,6 +436,29 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
 //            [_mapView addAnnotations:self.annotations];
 ////            [_mapView showAnnotations:self.annotations edgePadding:UIEdgeInsetsMake(20, 20, 20, 80) animated:YES];
 //        }
+        
+        
+        if (_mapView.zoomLevel <= 6) {
+            _endLevel = [NSNumber numberWithInt:1];
+        } else if (_mapView.zoomLevel > 6 && _mapView.zoomLevel < 12) {
+            _endLevel = [NSNumber numberWithInt:2];
+        } else if (_mapView.zoomLevel >= 12) {
+            _endLevel = [NSNumber numberWithInt:3];
+        }
+        
+        if (_startLevel != _endLevel) {
+            NSLog(@"在这里给Flutter发送消息");
+
+            NSDictionary* arguments = @{
+                                        @"lat" : [NSNumber numberWithDouble:_mapView.centerCoordinate.latitude],
+                                        @"lng" : [NSNumber numberWithDouble:_mapView.centerCoordinate.longitude],
+                                        @"ratioLevel": _endLevel,
+                                        };
+                        
+            [_channel invokeMethod:@"ratioChanged" arguments:arguments];
+
+
+        }
     }
 }
 
@@ -496,7 +504,8 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
 - (NSObject<FlutterPlatformView>*)createWithFrame:(CGRect)frame
                                    viewIdentifier:(int64_t)viewId
                                         arguments:(id _Nullable)args {
-    FlutterAMap2DMultipleAnnotationController* aMap2DMultipleAnnotaitonController = [[FlutterAMap2DMultipleAnnotationController alloc] initWithFrame:frame
+    FlutterAMap2DMultipleAnnotationController* aMap2DMultipleAnnotaitonController = [
+        [FlutterAMap2DMultipleAnnotationController alloc] initWithFrame:frame
                                                                                 viewIdentifier:viewId
                                                                                      arguments:args
                                                                                binaryMessenger:_messenger];

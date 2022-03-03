@@ -24,5 +24,26 @@
 
 @property (nonatomic, strong) NSNumber *itemCount;
 @property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *countLabel;
+
+@property (nonatomic, strong) NSDictionary *modelDictionry;
+
+@end
+
+
+@interface CityAnnotationView : MAAnnotationView
+
+@property (nonatomic, strong) NSNumber *itemCount;
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) NSDictionary *modelDictionry;
+
+@end
+
+
+@interface MerchantAnnotationView : MAAnnotationView
+
+@property (nonatomic, strong) NSNumber *itemCount;
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) NSDictionary *modelDictionry;
 
 @end

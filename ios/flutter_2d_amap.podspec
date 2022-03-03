@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_2d_amap'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'A new Flutter plugin.'
   s.description      = <<-DESC
 A new Flutter plugin.
@@ -17,7 +17,7 @@ A new Flutter plugin.
   s.dependency 'Flutter'
   s.dependency 'AMap2DMap', '5.6.1'
   s.dependency 'AMapSearch', '7.9.0'
-  s.dependency 'AMapLocation', '2.7.0'
+  s.dependency 'AMapLocation', '2.8.0'
   s.static_framework = true
   s.ios.deployment_target = '9.0'
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 i386' }
