@@ -11,6 +11,9 @@ export 'src/model/poi_search_model.dart';
 export 'src/amap_2d_multiple_annotation_view.dart';
 export 'src/interface/amap_2d_multiple_annotation_controller.dart';
 
+export 'src/amap_2d_limit_view.dart';
+export 'src/interface/amap_2d_limit_controller.dart';
+
 class Flutter2dAMap {
   static const MethodChannel _channel =
       MethodChannel('plugins.weilu/flutter_2d_amap_');

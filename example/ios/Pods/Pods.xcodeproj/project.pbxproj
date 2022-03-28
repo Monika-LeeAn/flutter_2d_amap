@@ -19,7 +19,7 @@
 		};
 		39082CE2CA8065D786A75F5C09CFF2C0 /* AMapFoundation */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = D5FCEBB3E8E0DFFD806A242EAF061F51 /* Build configuration list for PBXAggregateTarget "AMapFoundation" */;
+			buildConfigurationList = 49EC60776AB3C3D2BF6492B553351B52 /* Build configuration list for PBXAggregateTarget "AMapFoundation" */;
 			buildPhases = (
 			);
 			dependencies = (
@@ -33,7 +33,7 @@
 			buildPhases = (
 			);
 			dependencies = (
-				FD07DF1B6A55AFF0BB83D7112CEABE2E /* PBXTargetDependency */,
+				1874AD5605A7C5414AF70B588ED8A946 /* PBXTargetDependency */,
 			);
 			name = AMapSearch;
 			productName = AMapSearch;
@@ -44,7 +44,7 @@
 			buildPhases = (
 			);
 			dependencies = (
-				19ACB90B2E9D95A3FCFBA96F33B36B02 /* PBXTargetDependency */,
+				E1F7575757F74FFD0285AB7112314135 /* PBXTargetDependency */,
 			);
 			name = AMap2DMap;
 			productName = AMap2DMap;
@@ -55,7 +55,7 @@
 			buildPhases = (
 			);
 			dependencies = (
-				ECC00C9C85C193DFE928DE910B8DA851 /* PBXTargetDependency */,
+				350E47D60B332AC172785112FE93E6FE /* PBXTargetDependency */,
 			);
 			name = AMapLocation;
 			productName = AMapLocation;
@@ -63,118 +63,120 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0832711754B628BC96E42A33A5C3AC04 /* FlutterAMap2DMultipleAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2FD5C4F1183B4372F924C5A88DD789 /* FlutterAMap2DMultipleAnnotation.m */; };
-		1B0D0FD44C22C6EEE46454636AF043D4 /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5600F3EBD3C36D5E8F9574183833E /* CustomAnnotationView.m */; };
-		2DA553F1D96A87F9485D43C371D49092 /* Flutter2dAmapPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 2097C5AF058566367D49929F3C325BEB /* Flutter2dAmapPlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		3CDBD20DCA2B18F941638A478F287AEC /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = C553BAB667BBBAE819AE9D241B657102 /* CustomCalloutView.m */; };
-		432A20CA884DF73FF6688DDFBD49EEFE /* CustomCalloutView.h in Headers */ = {isa = PBXBuildFile; fileRef = DA0746B5A514D7FB72F47B545BC75AD7 /* CustomCalloutView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		601B0FCB0B4F047D6EC0B0A6F5BF81CB /* flutter_2d_amap-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF157B28A021B9BB7B752A6DC147195 /* flutter_2d_amap-dummy.m */; };
+		11FF1C6E47450C3992DF1B75D64C506C /* CustomCalloutView.h in Headers */ = {isa = PBXBuildFile; fileRef = 63B59B6031E377F2748B813ECF0FB409 /* CustomCalloutView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		19B69FA1018F4AA83B17099ABE421D9A /* FlutterAMap2DMultipleAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E788AA495AD2C999200E50066B24FA /* FlutterAMap2DMultipleAnnotation.m */; };
+		2A6AB2A7099D0A45F8BE33DE4EBD9E40 /* FlutterAMap2DMultipleAnnotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BD7496B7C9415FA9A809F450EDCD96C /* FlutterAMap2DMultipleAnnotation.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		2E555C5448B0E3FD982A1680B7125C2F /* ZYMerchantAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D52EC89A256AA5B0D51E36395F66A489 /* ZYMerchantAnnotationView.m */; };
+		35CE7A70540924B4FA78470E3886BAD6 /* ZYCityAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 842EE323D953DC6D310174D416D1744E /* ZYCityAnnotationView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		38CF97FFD654047D57177C00AE72ED02 /* CustomAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 61B54FC26E47129CCCAFF35C37E80763 /* CustomAnnotationView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		4722CA01352B6489AE038503B1E0C9A9 /* FlutterAMap2D.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22C1F2130AD7243279F9842C508F92 /* FlutterAMap2D.m */; };
+		54B1891BDDA651E92E233C04EA31747D /* ZYProvinceAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3805B5AC0F592B3A82950B275386ECCB /* ZYProvinceAnnotationView.m */; };
 		822A3BFD3AC11F0D90129FAA70D3A02B /* Pods-Runner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0769263DD910C3C79E304E0CD1CE0049 /* Pods-Runner-dummy.m */; };
-		8BA8D72527CDF88F002283BD /* ZYProvinceAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA8D72327CDF88F002283BD /* ZYProvinceAnnotationView.h */; };
-		8BA8D72627CDF88F002283BD /* ZYProvinceAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA8D72427CDF88F002283BD /* ZYProvinceAnnotationView.m */; };
-		8BA8D72D27D04A7B002283BD /* ZYCityAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA8D72B27D04A7B002283BD /* ZYCityAnnotationView.h */; };
-		8BA8D72E27D04A7B002283BD /* ZYCityAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA8D72C27D04A7B002283BD /* ZYCityAnnotationView.m */; };
-		8BA8D73527D09520002283BD /* ZYMerchantAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA8D73327D09520002283BD /* ZYMerchantAnnotationView.h */; };
-		8BA8D73627D09520002283BD /* ZYMerchantAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA8D73427D09520002283BD /* ZYMerchantAnnotationView.m */; };
-		94B602C3A09917CE6959B7903920B85B /* FlutterAMap2D.m in Sources */ = {isa = PBXBuildFile; fileRef = EC22F03A86480558E1098E8B8F48E31A /* FlutterAMap2D.m */; };
-		A0685FD23E44D22563E19BCF62CEBDD3 /* flutter_2d_amap-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 861DC4C4989C9C13F33768943C0DF948 /* flutter_2d_amap-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B2DC6E2834AF31E0C6093E9CCAFBB076 /* FlutterAMap2DMultipleAnnotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 13681C1D42934D19850E656F55F42B24 /* FlutterAMap2DMultipleAnnotation.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		D263A1E2696E96F86E7F2512C8B08052 /* CustomAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D0190B2FF5A80B0B1A9B0E75015D5E6 /* CustomAnnotationView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		DD386280A653106360D9051696301796 /* FlutterAMap2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 728C69A52CE057CA036D36BD37901F39 /* FlutterAMap2D.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		F0D74D80FFB6FCC221C85B8E7CB8CC50 /* Flutter2dAmapPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC23DF26AEC0CF33835ED6D27A7C2D /* Flutter2dAmapPlugin.m */; };
+		85B4CB060E3E59BC3B3C103A6682C784 /* flutter_2d_amap-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 861DC4C4989C9C13F33768943C0DF948 /* flutter_2d_amap-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		8B94C4D227ED6B1500BAAEBF /* FlutterAMap2DLimit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B94C4D027ED6B1500BAAEBF /* FlutterAMap2DLimit.h */; };
+		8B94C4D327ED6B1500BAAEBF /* FlutterAMap2DLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B94C4D127ED6B1500BAAEBF /* FlutterAMap2DLimit.m */; };
+		8C97921873DB3C14DB6C55566D1F0764 /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB7C83DB45A27F0CA49B8AB07ABE3BF /* CustomCalloutView.m */; };
+		A96C89D91F462742E26A248B45BDD0D0 /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D522A65081DAA995645AC79804BF99 /* CustomAnnotationView.m */; };
+		B1DBB6900AA91E7EF59EDA4E50D13D51 /* ZYCityAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 450A8DF469A3C1447ED80C5A389F8FEF /* ZYCityAnnotationView.m */; };
+		B5A91C5985E85EAA0C6875E9BED617AD /* Flutter2dAmapPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FBAB83E8AEC248D39D92478CAEA7035 /* Flutter2dAmapPlugin.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		B9B76125EF419E08AE0A340673002363 /* FlutterAMap2D.h in Headers */ = {isa = PBXBuildFile; fileRef = E4721DEF3B65C4F7088400DCCA2CEBF8 /* FlutterAMap2D.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		BC9649270F525558501E8E1A59FFE790 /* Flutter2dAmapPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 809D97EACFB4AAE0DA46661B1012149D /* Flutter2dAmapPlugin.m */; };
+		BD3E879ABC4E557EF76AF8BDDF3CD6B9 /* ZYProvinceAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 790D9D1DF5D9EE827134283F0D3820FA /* ZYProvinceAnnotationView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		CC6494A0F243DED131204138E0708DF3 /* ZYMerchantAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = C8BA2D4F646C25CDE2745A49C0B29D5C /* ZYMerchantAnnotationView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		EB37DC482920E1C9063EF8BE056064E3 /* flutter_2d_amap-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF157B28A021B9BB7B752A6DC147195 /* flutter_2d_amap-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0278AA6825EA38FB6402B9182220C866 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 971676D1C9A11C105647D995975ACE4F;
-			remoteInfo = AMapLocation;
-		};
-		40B5FEB6961EF3FBC9340562FFEEA92C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 39082CE2CA8065D786A75F5C09CFF2C0;
-			remoteInfo = AMapFoundation;
-		};
-		415FDC5BA3BA84A0B1641F91FD00E455 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 39082CE2CA8065D786A75F5C09CFF2C0;
-			remoteInfo = AMapFoundation;
-		};
-		593C69642D80E3F93AE1853025993C87 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 39082CE2CA8065D786A75F5C09CFF2C0;
-			remoteInfo = AMapFoundation;
-		};
-		5F861C2A5EF55269D5FE550D4D16AB9D /* PBXContainerItemProxy */ = {
+		28ED3C6F90CF685C15552A5ADC13928B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 1EFDDC32A34D56D411E640A81DCD9E73;
 			remoteInfo = Flutter;
 		};
-		603F7B8FAB93314D7EB3BE8461198DE9 /* PBXContainerItemProxy */ = {
+		382BF4642284CE2AB143547794916BC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 39082CE2CA8065D786A75F5C09CFF2C0;
+			remoteInfo = AMapFoundation;
+		};
+		3E0AA2E56434B1C49B8CA3A16702A9AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8628BC7F8FF0BA905278BC233A7C0362;
+			remoteInfo = AMap2DMap;
+		};
+		43CF62940D0E37A5EFEE2C9675A716D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54F872FDE6669F86C58C8075211FE643;
+			remoteInfo = AMapSearch;
+		};
+		634735008DAADD52A653F7073BF96AD4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 39082CE2CA8065D786A75F5C09CFF2C0;
+			remoteInfo = AMapFoundation;
+		};
+		65183AE0F9199490885381D127FD0CB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8628BC7F8FF0BA905278BC233A7C0362;
+			remoteInfo = AMap2DMap;
+		};
+		77EEDC4DD9B8A97289E77AB8034BCD5C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0D95C1EFA048E733901B68F27946BC5E;
 			remoteInfo = flutter_2d_amap;
 		};
-		61BA04546B857EB774C7DEB9CA31D65F /* PBXContainerItemProxy */ = {
+		80B11EE65E2AC2D4810A211698A442DB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 54F872FDE6669F86C58C8075211FE643;
 			remoteInfo = AMapSearch;
 		};
-		AE788E99B133CBC54E4418E5F2E855FA /* PBXContainerItemProxy */ = {
+		B2333FDB352DE01261785B516D40B389 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 39082CE2CA8065D786A75F5C09CFF2C0;
-			remoteInfo = AMapFoundation;
+			remoteGlobalIDString = 971676D1C9A11C105647D995975ACE4F;
+			remoteInfo = AMapLocation;
 		};
-		AF8F63BC1053961BC1606A6FA20CA685 /* PBXContainerItemProxy */ = {
+		C52F26A9E60896B0C5AC53DD6E7CD8C8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 54F872FDE6669F86C58C8075211FE643;
-			remoteInfo = AMapSearch;
+			remoteGlobalIDString = 971676D1C9A11C105647D995975ACE4F;
+			remoteInfo = AMapLocation;
 		};
-		BCB0D3B3E83C74676B9037CDD83E7F74 /* PBXContainerItemProxy */ = {
+		E19F679AFB0596C8D25EF7A2AEA82D8E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 1EFDDC32A34D56D411E640A81DCD9E73;
 			remoteInfo = Flutter;
 		};
-		C1F43B530E6CE0B913C2BE734B5FFE9A /* PBXContainerItemProxy */ = {
+		EAE14CD9AA20486D78365C9B0AC4B701 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8628BC7F8FF0BA905278BC233A7C0362;
-			remoteInfo = AMap2DMap;
+			remoteGlobalIDString = 39082CE2CA8065D786A75F5C09CFF2C0;
+			remoteInfo = AMapFoundation;
 		};
-		CAE1D38A0FAB06137CA3BD89FDA2782E /* PBXContainerItemProxy */ = {
+		ED0DAFEF27B1F39A271DDDD685278911 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8628BC7F8FF0BA905278BC233A7C0362;
-			remoteInfo = AMap2DMap;
-		};
-		CEE271898B9DFC3A72A3997B2A9935DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 971676D1C9A11C105647D995975ACE4F;
-			remoteInfo = AMapLocation;
+			remoteGlobalIDString = 39082CE2CA8065D786A75F5C09CFF2C0;
+			remoteInfo = AMapFoundation;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -190,58 +192,59 @@
 		0EF157B28A021B9BB7B752A6DC147195 /* flutter_2d_amap-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "flutter_2d_amap-dummy.m"; sourceTree = "<group>"; };
 		124AF8D6BDD1D291F90B06A775EA90BE /* MACircleView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MACircleView.h; path = MAMapKit.framework/Headers/MACircleView.h; sourceTree = "<group>"; };
 		12E9AB113FDB3A170D0DE452BF9A5363 /* AMapLocationKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapLocationKit.h; path = AMapLocationKit.framework/Headers/AMapLocationKit.h; sourceTree = "<group>"; };
-		13681C1D42934D19850E656F55F42B24 /* FlutterAMap2DMultipleAnnotation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlutterAMap2DMultipleAnnotation.h; path = ../../../../../../../ios/Classes/FlutterAMap2DMultipleAnnotation.h; sourceTree = "<group>"; };
 		163821C47CF613BCAEE522EDAE5F362A /* MACircle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MACircle.h; path = MAMapKit.framework/Headers/MACircle.h; sourceTree = "<group>"; };
 		165F73BCB2BF63C32A7BD59A3CFC7021 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		16C18C1C067FEF0D9A569024E229F537 /* MAMapVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAMapVersion.h; path = MAMapKit.framework/Headers/MAMapVersion.h; sourceTree = "<group>"; };
 		195657E09FBC9980876D892797BB31E2 /* AMapNearbySearchManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapNearbySearchManager.h; path = AMapSearchKit.framework/Headers/AMapNearbySearchManager.h; sourceTree = "<group>"; };
 		1C8625EBFE2F402A2433D1A2220A3F5D /* AMap2DMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AMap2DMap.release.xcconfig; sourceTree = "<group>"; };
-		1D0190B2FF5A80B0B1A9B0E75015D5E6 /* CustomAnnotationView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CustomAnnotationView.h; path = ../../../../../../../ios/Classes/CustomAnnotationView.h; sourceTree = "<group>"; };
 		1E2146E1E52CC4145403F7C1DBDA54CC /* MAPolygon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAPolygon.h; path = MAMapKit.framework/Headers/MAPolygon.h; sourceTree = "<group>"; };
 		1EAAD2167A25B0EF056A527510354E2E /* AMapSearchObj.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapSearchObj.h; path = AMapSearchKit.framework/Headers/AMapSearchObj.h; sourceTree = "<group>"; };
 		1FA23B2179DB1BA7600BDF7A7EB44CC8 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
-		2097C5AF058566367D49929F3C325BEB /* Flutter2dAmapPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Flutter2dAmapPlugin.h; path = ../../../../../../../ios/Classes/Flutter2dAmapPlugin.h; sourceTree = "<group>"; };
 		225E0B92036634909F94BBDB58389743 /* MAGroundOverlay.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAGroundOverlay.h; path = MAMapKit.framework/Headers/MAGroundOverlay.h; sourceTree = "<group>"; };
 		29D02F98F621FBA870BB08572DBF7172 /* Pods-Runner-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Runner-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2B1158F3D690F4C0EDB3A5DB2EA67F6F /* MAOverlay.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAOverlay.h; path = MAMapKit.framework/Headers/MAOverlay.h; sourceTree = "<group>"; };
 		2EF9A3F8D236E89D9A6DC3140356630F /* AMapFoundationKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapFoundationKit.h; path = AMapFoundationKit.framework/Headers/AMapFoundationKit.h; sourceTree = "<group>"; };
+		3805B5AC0F592B3A82950B275386ECCB /* ZYProvinceAnnotationView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZYProvinceAnnotationView.m; path = ../../../../../../../ios/Classes/ZYProvinceAnnotationView.m; sourceTree = "<group>"; };
 		3876158883D1AF1449D2BF09964BC2B3 /* AMapSearchAPI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapSearchAPI.h; path = AMapSearchKit.framework/Headers/AMapSearchAPI.h; sourceTree = "<group>"; };
 		38AB1E06F8EFF8698B71A1E84B5FDE79 /* MAPointAnnotation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAPointAnnotation.h; path = MAMapKit.framework/Headers/MAPointAnnotation.h; sourceTree = "<group>"; };
 		39B3DE51348F73EF16C9BE4A03336477 /* AMapLocationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapLocationManager.h; path = AMapLocationKit.framework/Headers/AMapLocationManager.h; sourceTree = "<group>"; };
 		3BCE581D78EB510FAAC24BE86D88E657 /* MAHeatMapTileOverlay.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAHeatMapTileOverlay.h; path = MAMapKit.framework/Headers/MAHeatMapTileOverlay.h; sourceTree = "<group>"; };
+		3BD7496B7C9415FA9A809F450EDCD96C /* FlutterAMap2DMultipleAnnotation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlutterAMap2DMultipleAnnotation.h; path = ../../../../../../../ios/Classes/FlutterAMap2DMultipleAnnotation.h; sourceTree = "<group>"; };
 		3D40527A090D33E04D34690525F7F739 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		41BC50023A7E19AEE5E8146577BF267A /* AMapSearchError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapSearchError.h; path = AMapSearchKit.framework/Headers/AMapSearchError.h; sourceTree = "<group>"; };
 		42AA4E34FE609822B74C8F49476C43E2 /* MAGeodesicPolyline.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAGeodesicPolyline.h; path = MAMapKit.framework/Headers/MAGeodesicPolyline.h; sourceTree = "<group>"; };
+		450A8DF469A3C1447ED80C5A389F8FEF /* ZYCityAnnotationView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZYCityAnnotationView.m; path = ../../../../../../../ios/Classes/ZYCityAnnotationView.m; sourceTree = "<group>"; };
 		461566FCE9060A6947EB91DF418D6EB8 /* AMapGeoFenceError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapGeoFenceError.h; path = AMapLocationKit.framework/Headers/AMapGeoFenceError.h; sourceTree = "<group>"; };
 		47A5BBE2594EE1B7CCAD5F771E56C405 /* MAPolyline.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAPolyline.h; path = MAMapKit.framework/Headers/MAPolyline.h; sourceTree = "<group>"; };
 		4817522C773B7D7071B1AE26CF81DC67 /* MAMultiPolyline.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAMultiPolyline.h; path = MAMapKit.framework/Headers/MAMultiPolyline.h; sourceTree = "<group>"; };
-		4F2FD5C4F1183B4372F924C5A88DD789 /* FlutterAMap2DMultipleAnnotation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FlutterAMap2DMultipleAnnotation.m; path = ../../../../../../../ios/Classes/FlutterAMap2DMultipleAnnotation.m; sourceTree = "<group>"; };
 		5243C74B80BAB7DB0A959FBA45F20BF8 /* MAOverlayPathView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAOverlayPathView.h; path = MAMapKit.framework/Headers/MAOverlayPathView.h; sourceTree = "<group>"; };
 		5F9498F9456A088C7948E0FA9ACC0835 /* Flutter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Flutter.release.xcconfig; sourceTree = "<group>"; };
 		600F798190A4C3E8182B1421E934F717 /* AMapFoundation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AMapFoundation.debug.xcconfig; sourceTree = "<group>"; };
+		61B54FC26E47129CCCAFF35C37E80763 /* CustomAnnotationView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CustomAnnotationView.h; path = ../../../../../../../ios/Classes/CustomAnnotationView.h; sourceTree = "<group>"; };
+		63B59B6031E377F2748B813ECF0FB409 /* CustomCalloutView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CustomCalloutView.h; path = ../../../../../../../ios/Classes/CustomCalloutView.h; sourceTree = "<group>"; };
 		669E8F25E1897672BDB80B7EB784DA24 /* Pods-Runner */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "Pods-Runner"; path = "libPods-Runner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		685433291BCA66F0C43A1F6F19A7F352 /* flutter_2d_amap */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = flutter_2d_amap; path = libflutter_2d_amap.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C68FD07FED91FFBC88BA29461785D94 /* AMapLocationCommonObj.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapLocationCommonObj.h; path = AMapLocationKit.framework/Headers/AMapLocationCommonObj.h; sourceTree = "<group>"; };
 		6DCC3CA483F8EFF84FD459CB0D8D6931 /* flutter_2d_amap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = flutter_2d_amap.debug.xcconfig; sourceTree = "<group>"; };
 		6DED514E0CA9CF8A9346528CC3AB8261 /* AMapCommonObj.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapCommonObj.h; path = AMapSearchKit.framework/Headers/AMapCommonObj.h; sourceTree = "<group>"; };
 		71B1C99A94CEA6E37534F924BA436C4D /* MAUserLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAUserLocation.h; path = MAMapKit.framework/Headers/MAUserLocation.h; sourceTree = "<group>"; };
-		728C69A52CE057CA036D36BD37901F39 /* FlutterAMap2D.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlutterAMap2D.h; path = ../../../../../../../ios/Classes/FlutterAMap2D.h; sourceTree = "<group>"; };
 		731672F59183C73FE1225FC6A2B3CF75 /* MAOverlayView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAOverlayView.h; path = MAMapKit.framework/Headers/MAOverlayView.h; sourceTree = "<group>"; };
 		7669220C70F88FA9AC7A1AFA8B5A7394 /* MAShape.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAShape.h; path = MAMapKit.framework/Headers/MAShape.h; sourceTree = "<group>"; };
+		790D9D1DF5D9EE827134283F0D3820FA /* ZYProvinceAnnotationView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZYProvinceAnnotationView.h; path = ../../../../../../../ios/Classes/ZYProvinceAnnotationView.h; sourceTree = "<group>"; };
 		796D646652CF67BF9ED4AAD02CB62343 /* flutter_2d_amap-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "flutter_2d_amap-prefix.pch"; sourceTree = "<group>"; };
 		7BA6138DCE1351646D281D07CA01387E /* AMapLocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AMapLocation.debug.xcconfig; sourceTree = "<group>"; };
 		7D4FF2FA780A9D9115A0C8DAFB7A9A73 /* AMapFoundationVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapFoundationVersion.h; path = AMapFoundationKit.framework/Headers/AMapFoundationVersion.h; sourceTree = "<group>"; };
+		7FBAB83E8AEC248D39D92478CAEA7035 /* Flutter2dAmapPlugin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Flutter2dAmapPlugin.h; path = ../../../../../../../ios/Classes/Flutter2dAmapPlugin.h; sourceTree = "<group>"; };
+		809D97EACFB4AAE0DA46661B1012149D /* Flutter2dAmapPlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Flutter2dAmapPlugin.m; path = ../../../../../../../ios/Classes/Flutter2dAmapPlugin.m; sourceTree = "<group>"; };
 		80D44BE9F6B27EDFBDEF6121DE8239E4 /* MAPolygonView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAPolygonView.h; path = MAMapKit.framework/Headers/MAPolygonView.h; sourceTree = "<group>"; };
+		80D522A65081DAA995645AC79804BF99 /* CustomAnnotationView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CustomAnnotationView.m; path = ../../../../../../../ios/Classes/CustomAnnotationView.m; sourceTree = "<group>"; };
 		812D4FB22907DD2E769460DA8932FC72 /* MAAnnotation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAAnnotation.h; path = MAMapKit.framework/Headers/MAAnnotation.h; sourceTree = "<group>"; };
 		82182968CCF4191F263C495716AE2CD1 /* MAMultiPoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAMultiPoint.h; path = MAMapKit.framework/Headers/MAMultiPoint.h; sourceTree = "<group>"; };
+		82E788AA495AD2C999200E50066B24FA /* FlutterAMap2DMultipleAnnotation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FlutterAMap2DMultipleAnnotation.m; path = ../../../../../../../ios/Classes/FlutterAMap2DMultipleAnnotation.m; sourceTree = "<group>"; };
+		842EE323D953DC6D310174D416D1744E /* ZYCityAnnotationView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZYCityAnnotationView.h; path = ../../../../../../../ios/Classes/ZYCityAnnotationView.h; sourceTree = "<group>"; };
 		861DC4C4989C9C13F33768943C0DF948 /* flutter_2d_amap-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "flutter_2d_amap-umbrella.h"; sourceTree = "<group>"; };
-		8BA8D72327CDF88F002283BD /* ZYProvinceAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZYProvinceAnnotationView.h; path = ../../../../../../../ios/Classes/ZYProvinceAnnotationView.h; sourceTree = "<group>"; };
-		8BA8D72427CDF88F002283BD /* ZYProvinceAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ZYProvinceAnnotationView.m; path = ../../../../../../../ios/Classes/ZYProvinceAnnotationView.m; sourceTree = "<group>"; };
-		8BA8D72B27D04A7B002283BD /* ZYCityAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZYCityAnnotationView.h; path = ../../../../../../../ios/Classes/ZYCityAnnotationView.h; sourceTree = "<group>"; };
-		8BA8D72C27D04A7B002283BD /* ZYCityAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ZYCityAnnotationView.m; path = ../../../../../../../ios/Classes/ZYCityAnnotationView.m; sourceTree = "<group>"; };
-		8BA8D73327D09520002283BD /* ZYMerchantAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZYMerchantAnnotationView.h; path = ../../../../../../../ios/Classes/ZYMerchantAnnotationView.h; sourceTree = "<group>"; };
-		8BA8D73427D09520002283BD /* ZYMerchantAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYMerchantAnnotationView.m; path = ../../../../../../../ios/Classes/ZYMerchantAnnotationView.m; sourceTree = "<group>"; };
-		8BDC23DF26AEC0CF33835ED6D27A7C2D /* Flutter2dAmapPlugin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Flutter2dAmapPlugin.m; path = ../../../../../../../ios/Classes/Flutter2dAmapPlugin.m; sourceTree = "<group>"; };
+		8B94C4D027ED6B1500BAAEBF /* FlutterAMap2DLimit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlutterAMap2DLimit.h; path = ../../../../../../../ios/Classes/FlutterAMap2DLimit.h; sourceTree = "<group>"; };
+		8B94C4D127ED6B1500BAAEBF /* FlutterAMap2DLimit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FlutterAMap2DLimit.m; path = ../../../../../../../ios/Classes/FlutterAMap2DLimit.m; sourceTree = "<group>"; };
 		8D62D9DF45562E362FD7BE2AEAC09DD4 /* MAOverlayRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAOverlayRenderer.h; path = MAMapKit.framework/Headers/MAOverlayRenderer.h; sourceTree = "<group>"; };
 		8F0FCB480BB9274550A95F3C322A89D1 /* MACircleRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MACircleRenderer.h; path = MAMapKit.framework/Headers/MACircleRenderer.h; sourceTree = "<group>"; };
 		8F7229947AD803A434FD0EC1D4E1E5DF /* AMapLocationRegionObj.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapLocationRegionObj.h; path = AMapLocationKit.framework/Headers/AMapLocationRegionObj.h; sourceTree = "<group>"; };
@@ -256,30 +259,30 @@
 		A9365190BE2D066084E26C4A3CC0C6EF /* MAMultiColoredPolylineRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAMultiColoredPolylineRenderer.h; path = MAMapKit.framework/Headers/MAMultiColoredPolylineRenderer.h; sourceTree = "<group>"; };
 		AA98B97D68499AC3B76AA8FB6997BD38 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapLocationKit.framework; sourceTree = "<group>"; };
 		ACBF924D00E656C3E77B70CFE1820DFC /* AMapNearbyUploadInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapNearbyUploadInfo.h; path = AMapSearchKit.framework/Headers/AMapNearbyUploadInfo.h; sourceTree = "<group>"; };
-		ACE5600F3EBD3C36D5E8F9574183833E /* CustomAnnotationView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CustomAnnotationView.m; path = ../../../../../../../ios/Classes/CustomAnnotationView.m; sourceTree = "<group>"; };
 		AF701B9070ED50ADE7B67538725EB04A /* AMapGeoFenceRegionObj.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapGeoFenceRegionObj.h; path = AMapLocationKit.framework/Headers/AMapGeoFenceRegionObj.h; sourceTree = "<group>"; };
 		B2BF9369CB63FDEBB8497CBAC2D5AC55 /* AMapUtility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapUtility.h; path = AMapFoundationKit.framework/Headers/AMapUtility.h; sourceTree = "<group>"; };
 		B6F71D797F9A5A6935B5A7D1C26C36B3 /* AMapLocationVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapLocationVersion.h; path = AMapLocationKit.framework/Headers/AMapLocationVersion.h; sourceTree = "<group>"; };
 		BFD10954075A2A2DED5D1349B7721C54 /* AMapSearchKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapSearchKit.h; path = AMapSearchKit.framework/Headers/AMapSearchKit.h; sourceTree = "<group>"; };
 		C0E1EB47B756E225F9497B06745852E9 /* MAOverlayPathRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAOverlayPathRenderer.h; path = MAMapKit.framework/Headers/MAOverlayPathRenderer.h; sourceTree = "<group>"; };
 		C27018162BAFB7429B6D99D1353049FA /* MAGroundOverlayRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAGroundOverlayRenderer.h; path = MAMapKit.framework/Headers/MAGroundOverlayRenderer.h; sourceTree = "<group>"; };
-		C553BAB667BBBAE819AE9D241B657102 /* CustomCalloutView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CustomCalloutView.m; path = ../../../../../../../ios/Classes/CustomCalloutView.m; sourceTree = "<group>"; };
+		C8BA2D4F646C25CDE2745A49C0B29D5C /* ZYMerchantAnnotationView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZYMerchantAnnotationView.h; path = ../../../../../../../ios/Classes/ZYMerchantAnnotationView.h; sourceTree = "<group>"; };
 		C9D8F72743F95DA428ACA6349E188857 /* MAMapKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAMapKit.h; path = MAMapKit.framework/Headers/MAMapKit.h; sourceTree = "<group>"; };
 		CF782A0F34863E28E711B5EBBE36D0D8 /* AMapSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AMapSearch.release.xcconfig; sourceTree = "<group>"; };
 		D00A8AE5322EBEBE782A10CD0A34EE56 /* AMapSearchVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapSearchVersion.h; path = AMapSearchKit.framework/Headers/AMapSearchVersion.h; sourceTree = "<group>"; };
 		D1FBF62257E21A1D8245CE04D27EB84B /* AMapURLSearchType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapURLSearchType.h; path = AMapFoundationKit.framework/Headers/AMapURLSearchType.h; sourceTree = "<group>"; };
 		D368750E792DFEEB5424236E95258CD2 /* AMapLocation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AMapLocation.release.xcconfig; sourceTree = "<group>"; };
+		D52EC89A256AA5B0D51E36395F66A489 /* ZYMerchantAnnotationView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZYMerchantAnnotationView.m; path = ../../../../../../../ios/Classes/ZYMerchantAnnotationView.m; sourceTree = "<group>"; };
 		D5BC260794B87AB85799016712139C4D /* Pods-Runner-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Runner-acknowledgements.plist"; sourceTree = "<group>"; };
 		D7E71C7427D47D56A2F62E2F6DD3CA16 /* flutter_2d_amap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = flutter_2d_amap.release.xcconfig; sourceTree = "<group>"; };
 		D9016F9DC38C0599081089539B51EEAD /* AMap2DMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AMap2DMap.debug.xcconfig; sourceTree = "<group>"; };
-		DA0746B5A514D7FB72F47B545BC75AD7 /* CustomCalloutView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CustomCalloutView.h; path = ../../../../../../../ios/Classes/CustomCalloutView.h; sourceTree = "<group>"; };
 		DE53F3C2B63B23A77DD09C3D235D7688 /* Pods-Runner-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Runner-resources.sh"; sourceTree = "<group>"; };
 		DF193EAA4D3A609F7EF06E8F93F5DE47 /* MAGroundOverlayView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAGroundOverlayView.h; path = MAMapKit.framework/Headers/MAGroundOverlayView.h; sourceTree = "<group>"; };
+		E4721DEF3B65C4F7088400DCCA2CEBF8 /* FlutterAMap2D.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlutterAMap2D.h; path = ../../../../../../../ios/Classes/FlutterAMap2D.h; sourceTree = "<group>"; };
 		E4B3EDCAB87A8777B801B1AA581B618E /* MATileOverlay.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MATileOverlay.h; path = MAMapKit.framework/Headers/MATileOverlay.h; sourceTree = "<group>"; };
 		E52109631628700F340DF338169FF96F /* AMapGeoFenceManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapGeoFenceManager.h; path = AMapLocationKit.framework/Headers/AMapGeoFenceManager.h; sourceTree = "<group>"; };
 		E6C744FFF14D1AB18983F3D7B874D7B9 /* AMapSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AMapSearch.debug.xcconfig; sourceTree = "<group>"; };
 		E83368DFC788026A69A0B2B28E9B4B59 /* MATileOverlayView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MATileOverlayView.h; path = MAMapKit.framework/Headers/MATileOverlayView.h; sourceTree = "<group>"; };
-		EC22F03A86480558E1098E8B8F48E31A /* FlutterAMap2D.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FlutterAMap2D.m; path = ../../../../../../../ios/Classes/FlutterAMap2D.m; sourceTree = "<group>"; };
+		ECB7C83DB45A27F0CA49B8AB07ABE3BF /* CustomCalloutView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CustomCalloutView.m; path = ../../../../../../../ios/Classes/CustomCalloutView.m; sourceTree = "<group>"; };
 		F125EEF66E9A9D4BF4410207E7C3D2A7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../../../../../../LICENSE; sourceTree = "<group>"; };
 		F2F0FA7A537BB8D5AED42EA8572A32B1 /* MAPolygonRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAPolygonRenderer.h; path = MAMapKit.framework/Headers/MAPolygonRenderer.h; sourceTree = "<group>"; };
 		F2F8FE13FD8EC4A771A66163FCAE31B8 /* AMapURLSearchConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapURLSearchConfig.h; path = AMapFoundationKit.framework/Headers/AMapURLSearchConfig.h; sourceTree = "<group>"; };
@@ -287,6 +290,7 @@
 		F73750794A1FA7FEBF5BC852BD6C30EA /* flutter_2d_amap.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = flutter_2d_amap.modulemap; sourceTree = "<group>"; };
 		F9015FB4D26072A23CE6FB742C9926E8 /* MAPolylineRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAPolylineRenderer.h; path = MAMapKit.framework/Headers/MAPolylineRenderer.h; sourceTree = "<group>"; };
 		F9D67186317D9FD5B1FA425B7AEAF990 /* flutter_2d_amap.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = flutter_2d_amap.podspec; path = ../../../../../../ios/flutter_2d_amap.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FA22C1F2130AD7243279F9842C508F92 /* FlutterAMap2D.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FlutterAMap2D.m; path = ../../../../../../../ios/Classes/FlutterAMap2D.m; sourceTree = "<group>"; };
 		FDC5FB744A7EF85052E1A671073B63FD /* AMapURLSearch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapURLSearch.h; path = AMapFoundationKit.framework/Headers/AMapURLSearch.h; sourceTree = "<group>"; };
 		FE6761AE5897BD2F982CA9D2AB1D995A /* MAMapView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAMapView.h; path = MAMapKit.framework/Headers/MAMapView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -299,7 +303,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B9E6CC518E497A918731EA801282F695 /* Frameworks */ = {
+		D14DADF010D77256CBB5ECC1A8B475C8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -387,29 +391,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/AMap2DMap";
-			sourceTree = "<group>";
-		};
-		3AE918EE8E68390A8BB6F0E4EF03B1A7 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				8BA8D73327D09520002283BD /* ZYMerchantAnnotationView.h */,
-				8BA8D73427D09520002283BD /* ZYMerchantAnnotationView.m */,
-				8BA8D72327CDF88F002283BD /* ZYProvinceAnnotationView.h */,
-				8BA8D72427CDF88F002283BD /* ZYProvinceAnnotationView.m */,
-				8BA8D72B27D04A7B002283BD /* ZYCityAnnotationView.h */,
-				8BA8D72C27D04A7B002283BD /* ZYCityAnnotationView.m */,
-				1D0190B2FF5A80B0B1A9B0E75015D5E6 /* CustomAnnotationView.h */,
-				ACE5600F3EBD3C36D5E8F9574183833E /* CustomAnnotationView.m */,
-				DA0746B5A514D7FB72F47B545BC75AD7 /* CustomCalloutView.h */,
-				C553BAB667BBBAE819AE9D241B657102 /* CustomCalloutView.m */,
-				2097C5AF058566367D49929F3C325BEB /* Flutter2dAmapPlugin.h */,
-				8BDC23DF26AEC0CF33835ED6D27A7C2D /* Flutter2dAmapPlugin.m */,
-				728C69A52CE057CA036D36BD37901F39 /* FlutterAMap2D.h */,
-				EC22F03A86480558E1098E8B8F48E31A /* FlutterAMap2D.m */,
-				13681C1D42934D19850E656F55F42B24 /* FlutterAMap2DMultipleAnnotation.h */,
-				4F2FD5C4F1183B4372F924C5A88DD789 /* FlutterAMap2DMultipleAnnotation.m */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		3C6485D257AC11A07CB25AFA9002AD9B /* AMap2DMap */ = {
@@ -570,6 +551,14 @@
 			path = example;
 			sourceTree = "<group>";
 		};
+		949589749B077F25E6378583C0D0C80B /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				BAC44DE570535C40EFFFA39048CD45F0 /* Classes */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
 		9781D7A8AD95A417251A99D3B9E3C5F4 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,7 +572,7 @@
 		A83D901067F67D57CB44FFA9A9FD136A /* flutter_2d_amap */ = {
 			isa = PBXGroup;
 			children = (
-				E495F6848BEE0651E33E4FCA6F6381C9 /* ios */,
+				949589749B077F25E6378583C0D0C80B /* ios */,
 			);
 			path = flutter_2d_amap;
 			sourceTree = "<group>";
@@ -605,6 +594,31 @@
 				86A331E0C435D65BC3A5A720AD11E00C /* example */,
 			);
 			path = ..;
+			sourceTree = "<group>";
+		};
+		BAC44DE570535C40EFFFA39048CD45F0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				61B54FC26E47129CCCAFF35C37E80763 /* CustomAnnotationView.h */,
+				80D522A65081DAA995645AC79804BF99 /* CustomAnnotationView.m */,
+				63B59B6031E377F2748B813ECF0FB409 /* CustomCalloutView.h */,
+				ECB7C83DB45A27F0CA49B8AB07ABE3BF /* CustomCalloutView.m */,
+				7FBAB83E8AEC248D39D92478CAEA7035 /* Flutter2dAmapPlugin.h */,
+				809D97EACFB4AAE0DA46661B1012149D /* Flutter2dAmapPlugin.m */,
+				E4721DEF3B65C4F7088400DCCA2CEBF8 /* FlutterAMap2D.h */,
+				FA22C1F2130AD7243279F9842C508F92 /* FlutterAMap2D.m */,
+				3BD7496B7C9415FA9A809F450EDCD96C /* FlutterAMap2DMultipleAnnotation.h */,
+				82E788AA495AD2C999200E50066B24FA /* FlutterAMap2DMultipleAnnotation.m */,
+				8B94C4D027ED6B1500BAAEBF /* FlutterAMap2DLimit.h */,
+				8B94C4D127ED6B1500BAAEBF /* FlutterAMap2DLimit.m */,
+				842EE323D953DC6D310174D416D1744E /* ZYCityAnnotationView.h */,
+				450A8DF469A3C1447ED80C5A389F8FEF /* ZYCityAnnotationView.m */,
+				C8BA2D4F646C25CDE2745A49C0B29D5C /* ZYMerchantAnnotationView.h */,
+				D52EC89A256AA5B0D51E36395F66A489 /* ZYMerchantAnnotationView.m */,
+				790D9D1DF5D9EE827134283F0D3820FA /* ZYProvinceAnnotationView.h */,
+				3805B5AC0F592B3A82950B275386ECCB /* ZYProvinceAnnotationView.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		C011636CB08DA9B5C171232E6AB25A15 /* Pods */ = {
@@ -672,14 +686,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E495F6848BEE0651E33E4FCA6F6381C9 /* ios */ = {
-			isa = PBXGroup;
-			children = (
-				3AE918EE8E68390A8BB6F0E4EF03B1A7 /* Classes */,
-			);
-			path = ios;
-			sourceTree = "<group>";
-		};
 		EE428C6A5ADF0D2A88015046A190EAD1 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -717,19 +723,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		245808BDC14B401D3219035280AB3A0F /* Headers */ = {
+		87C668D86D491ED13613877B64AA3968 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D263A1E2696E96F86E7F2512C8B08052 /* CustomAnnotationView.h in Headers */,
-				432A20CA884DF73FF6688DDFBD49EEFE /* CustomCalloutView.h in Headers */,
-				8BA8D72527CDF88F002283BD /* ZYProvinceAnnotationView.h in Headers */,
-				2DA553F1D96A87F9485D43C371D49092 /* Flutter2dAmapPlugin.h in Headers */,
-				A0685FD23E44D22563E19BCF62CEBDD3 /* flutter_2d_amap-umbrella.h in Headers */,
-				DD386280A653106360D9051696301796 /* FlutterAMap2D.h in Headers */,
-				8BA8D73527D09520002283BD /* ZYMerchantAnnotationView.h in Headers */,
-				8BA8D72D27D04A7B002283BD /* ZYCityAnnotationView.h in Headers */,
-				B2DC6E2834AF31E0C6093E9CCAFBB076 /* FlutterAMap2DMultipleAnnotation.h in Headers */,
+				38CF97FFD654047D57177C00AE72ED02 /* CustomAnnotationView.h in Headers */,
+				11FF1C6E47450C3992DF1B75D64C506C /* CustomCalloutView.h in Headers */,
+				B5A91C5985E85EAA0C6875E9BED617AD /* Flutter2dAmapPlugin.h in Headers */,
+				85B4CB060E3E59BC3B3C103A6682C784 /* flutter_2d_amap-umbrella.h in Headers */,
+				8B94C4D227ED6B1500BAAEBF /* FlutterAMap2DLimit.h in Headers */,
+				B9B76125EF419E08AE0A340673002363 /* FlutterAMap2D.h in Headers */,
+				2A6AB2A7099D0A45F8BE33DE4EBD9E40 /* FlutterAMap2DMultipleAnnotation.h in Headers */,
+				35CE7A70540924B4FA78470E3886BAD6 /* ZYCityAnnotationView.h in Headers */,
+				CC6494A0F243DED131204138E0708DF3 /* ZYMerchantAnnotationView.h in Headers */,
+				BD3E879ABC4E557EF76AF8BDDF3CD6B9 /* ZYProvinceAnnotationView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,19 +745,19 @@
 /* Begin PBXNativeTarget section */
 		0D95C1EFA048E733901B68F27946BC5E /* flutter_2d_amap */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5FAB54A34A6AF6E029D2D45BA3F44469 /* Build configuration list for PBXNativeTarget "flutter_2d_amap" */;
+			buildConfigurationList = 8A3572CD79FC91C53ED7659FFA0F69B2 /* Build configuration list for PBXNativeTarget "flutter_2d_amap" */;
 			buildPhases = (
-				245808BDC14B401D3219035280AB3A0F /* Headers */,
-				66561795355069DA9B2B824B332B3D32 /* Sources */,
-				B9E6CC518E497A918731EA801282F695 /* Frameworks */,
+				87C668D86D491ED13613877B64AA3968 /* Headers */,
+				AE74149CAE6AAB74E7D5FA4529E29250 /* Sources */,
+				D14DADF010D77256CBB5ECC1A8B475C8 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2C65694DC686728A1401A1D33DEBC12B /* PBXTargetDependency */,
-				5596CAB3CF395D20BFFE8C7EB2262939 /* PBXTargetDependency */,
-				EF4519A98BB48E35F50ACB944BB8CFFB /* PBXTargetDependency */,
-				91595AB58DF2D3EBFFB0E23B506EAFEF /* PBXTargetDependency */,
+				D8CBEA0B5A9671F204E6DDE81284E82E /* PBXTargetDependency */,
+				01929262532E449922A78E2E1412258C /* PBXTargetDependency */,
+				08C528D8CCCE332A08BD97CE937A9C68 /* PBXTargetDependency */,
+				21259485734A1A112F4ED3DB175D956A /* PBXTargetDependency */,
 			);
 			name = flutter_2d_amap;
 			productName = flutter_2d_amap;
@@ -768,12 +775,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				2B055C24CDAE0D788499CE1ED1C646D2 /* PBXTargetDependency */,
-				91685852415CFCD3BD615F41C360ABA7 /* PBXTargetDependency */,
-				A809EB398375F6353425420682A70F8B /* PBXTargetDependency */,
-				E4C29C3D2007E4891E1C1C69EFE96525 /* PBXTargetDependency */,
-				50F2A0E2C59BC3656EB305A4C0E41402 /* PBXTargetDependency */,
-				ACE53965AD5A796597D4A409874E42D8 /* PBXTargetDependency */,
+				EB7CE2470204F569EDC40E6A3221448A /* PBXTargetDependency */,
+				5B2BE1AD16D434EFE5AE85A151A4A2E8 /* PBXTargetDependency */,
+				8B4460817AA2B50139E8F9138B4AD585 /* PBXTargetDependency */,
+				72D2936F7C49C66B3360BCC6CE0BF11E /* PBXTargetDependency */,
+				B2961F385F4A17A97D50D4273CF811B9 /* PBXTargetDependency */,
+				FCF208C0298F91D48259BAC761046C91 /* PBXTargetDependency */,
 			);
 			name = "Pods-Runner";
 			productName = "Pods-Runner";
@@ -822,102 +829,103 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		66561795355069DA9B2B824B332B3D32 /* Sources */ = {
+		AE74149CAE6AAB74E7D5FA4529E29250 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BA8D72627CDF88F002283BD /* ZYProvinceAnnotationView.m in Sources */,
-				1B0D0FD44C22C6EEE46454636AF043D4 /* CustomAnnotationView.m in Sources */,
-				3CDBD20DCA2B18F941638A478F287AEC /* CustomCalloutView.m in Sources */,
-				8BA8D72E27D04A7B002283BD /* ZYCityAnnotationView.m in Sources */,
-				8BA8D73627D09520002283BD /* ZYMerchantAnnotationView.m in Sources */,
-				F0D74D80FFB6FCC221C85B8E7CB8CC50 /* Flutter2dAmapPlugin.m in Sources */,
-				601B0FCB0B4F047D6EC0B0A6F5BF81CB /* flutter_2d_amap-dummy.m in Sources */,
-				94B602C3A09917CE6959B7903920B85B /* FlutterAMap2D.m in Sources */,
-				0832711754B628BC96E42A33A5C3AC04 /* FlutterAMap2DMultipleAnnotation.m in Sources */,
+				A96C89D91F462742E26A248B45BDD0D0 /* CustomAnnotationView.m in Sources */,
+				8C97921873DB3C14DB6C55566D1F0764 /* CustomCalloutView.m in Sources */,
+				BC9649270F525558501E8E1A59FFE790 /* Flutter2dAmapPlugin.m in Sources */,
+				EB37DC482920E1C9063EF8BE056064E3 /* flutter_2d_amap-dummy.m in Sources */,
+				4722CA01352B6489AE038503B1E0C9A9 /* FlutterAMap2D.m in Sources */,
+				19B69FA1018F4AA83B17099ABE421D9A /* FlutterAMap2DMultipleAnnotation.m in Sources */,
+				B1DBB6900AA91E7EF59EDA4E50D13D51 /* ZYCityAnnotationView.m in Sources */,
+				2E555C5448B0E3FD982A1680B7125C2F /* ZYMerchantAnnotationView.m in Sources */,
+				54B1891BDDA651E92E233C04EA31747D /* ZYProvinceAnnotationView.m in Sources */,
+				8B94C4D327ED6B1500BAAEBF /* FlutterAMap2DLimit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		19ACB90B2E9D95A3FCFBA96F33B36B02 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AMapFoundation;
-			target = 39082CE2CA8065D786A75F5C09CFF2C0 /* AMapFoundation */;
-			targetProxy = 415FDC5BA3BA84A0B1641F91FD00E455 /* PBXContainerItemProxy */;
-		};
-		2B055C24CDAE0D788499CE1ED1C646D2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AMap2DMap;
-			target = 8628BC7F8FF0BA905278BC233A7C0362 /* AMap2DMap */;
-			targetProxy = C1F43B530E6CE0B913C2BE734B5FFE9A /* PBXContainerItemProxy */;
-		};
-		2C65694DC686728A1401A1D33DEBC12B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AMap2DMap;
-			target = 8628BC7F8FF0BA905278BC233A7C0362 /* AMap2DMap */;
-			targetProxy = CAE1D38A0FAB06137CA3BD89FDA2782E /* PBXContainerItemProxy */;
-		};
-		50F2A0E2C59BC3656EB305A4C0E41402 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Flutter;
-			target = 1EFDDC32A34D56D411E640A81DCD9E73 /* Flutter */;
-			targetProxy = BCB0D3B3E83C74676B9037CDD83E7F74 /* PBXContainerItemProxy */;
-		};
-		5596CAB3CF395D20BFFE8C7EB2262939 /* PBXTargetDependency */ = {
+		01929262532E449922A78E2E1412258C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AMapLocation;
 			target = 971676D1C9A11C105647D995975ACE4F /* AMapLocation */;
-			targetProxy = CEE271898B9DFC3A72A3997B2A9935DF /* PBXContainerItemProxy */;
+			targetProxy = B2333FDB352DE01261785B516D40B389 /* PBXContainerItemProxy */;
 		};
-		91595AB58DF2D3EBFFB0E23B506EAFEF /* PBXTargetDependency */ = {
+		08C528D8CCCE332A08BD97CE937A9C68 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Flutter;
-			target = 1EFDDC32A34D56D411E640A81DCD9E73 /* Flutter */;
-			targetProxy = 5F861C2A5EF55269D5FE550D4D16AB9D /* PBXContainerItemProxy */;
+			name = AMapSearch;
+			target = 54F872FDE6669F86C58C8075211FE643 /* AMapSearch */;
+			targetProxy = 43CF62940D0E37A5EFEE2C9675A716D1 /* PBXContainerItemProxy */;
 		};
-		91685852415CFCD3BD615F41C360ABA7 /* PBXTargetDependency */ = {
+		1874AD5605A7C5414AF70B588ED8A946 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AMapFoundation;
 			target = 39082CE2CA8065D786A75F5C09CFF2C0 /* AMapFoundation */;
-			targetProxy = 40B5FEB6961EF3FBC9340562FFEEA92C /* PBXContainerItemProxy */;
+			targetProxy = ED0DAFEF27B1F39A271DDDD685278911 /* PBXContainerItemProxy */;
 		};
-		A809EB398375F6353425420682A70F8B /* PBXTargetDependency */ = {
+		21259485734A1A112F4ED3DB175D956A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Flutter;
+			target = 1EFDDC32A34D56D411E640A81DCD9E73 /* Flutter */;
+			targetProxy = E19F679AFB0596C8D25EF7A2AEA82D8E /* PBXContainerItemProxy */;
+		};
+		350E47D60B332AC172785112FE93E6FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AMapFoundation;
+			target = 39082CE2CA8065D786A75F5C09CFF2C0 /* AMapFoundation */;
+			targetProxy = 634735008DAADD52A653F7073BF96AD4 /* PBXContainerItemProxy */;
+		};
+		5B2BE1AD16D434EFE5AE85A151A4A2E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AMapFoundation;
+			target = 39082CE2CA8065D786A75F5C09CFF2C0 /* AMapFoundation */;
+			targetProxy = EAE14CD9AA20486D78365C9B0AC4B701 /* PBXContainerItemProxy */;
+		};
+		72D2936F7C49C66B3360BCC6CE0BF11E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AMapSearch;
+			target = 54F872FDE6669F86C58C8075211FE643 /* AMapSearch */;
+			targetProxy = 80B11EE65E2AC2D4810A211698A442DB /* PBXContainerItemProxy */;
+		};
+		8B4460817AA2B50139E8F9138B4AD585 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AMapLocation;
 			target = 971676D1C9A11C105647D995975ACE4F /* AMapLocation */;
-			targetProxy = 0278AA6825EA38FB6402B9182220C866 /* PBXContainerItemProxy */;
+			targetProxy = C52F26A9E60896B0C5AC53DD6E7CD8C8 /* PBXContainerItemProxy */;
 		};
-		ACE53965AD5A796597D4A409874E42D8 /* PBXTargetDependency */ = {
+		B2961F385F4A17A97D50D4273CF811B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Flutter;
+			target = 1EFDDC32A34D56D411E640A81DCD9E73 /* Flutter */;
+			targetProxy = 28ED3C6F90CF685C15552A5ADC13928B /* PBXContainerItemProxy */;
+		};
+		D8CBEA0B5A9671F204E6DDE81284E82E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AMap2DMap;
+			target = 8628BC7F8FF0BA905278BC233A7C0362 /* AMap2DMap */;
+			targetProxy = 65183AE0F9199490885381D127FD0CB6 /* PBXContainerItemProxy */;
+		};
+		E1F7575757F74FFD0285AB7112314135 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AMapFoundation;
+			target = 39082CE2CA8065D786A75F5C09CFF2C0 /* AMapFoundation */;
+			targetProxy = 382BF4642284CE2AB143547794916BC2 /* PBXContainerItemProxy */;
+		};
+		EB7CE2470204F569EDC40E6A3221448A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AMap2DMap;
+			target = 8628BC7F8FF0BA905278BC233A7C0362 /* AMap2DMap */;
+			targetProxy = 3E0AA2E56434B1C49B8CA3A16702A9AF /* PBXContainerItemProxy */;
+		};
+		FCF208C0298F91D48259BAC761046C91 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = flutter_2d_amap;
 			target = 0D95C1EFA048E733901B68F27946BC5E /* flutter_2d_amap */;
-			targetProxy = 603F7B8FAB93314D7EB3BE8461198DE9 /* PBXContainerItemProxy */;
-		};
-		E4C29C3D2007E4891E1C1C69EFE96525 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AMapSearch;
-			target = 54F872FDE6669F86C58C8075211FE643 /* AMapSearch */;
-			targetProxy = 61BA04546B857EB774C7DEB9CA31D65F /* PBXContainerItemProxy */;
-		};
-		ECC00C9C85C193DFE928DE910B8DA851 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AMapFoundation;
-			target = 39082CE2CA8065D786A75F5C09CFF2C0 /* AMapFoundation */;
-			targetProxy = AE788E99B133CBC54E4418E5F2E855FA /* PBXContainerItemProxy */;
-		};
-		EF4519A98BB48E35F50ACB944BB8CFFB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AMapSearch;
-			target = 54F872FDE6669F86C58C8075211FE643 /* AMapSearch */;
-			targetProxy = AF8F63BC1053961BC1606A6FA20CA685 /* PBXContainerItemProxy */;
-		};
-		FD07DF1B6A55AFF0BB83D7112CEABE2E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AMapFoundation;
-			target = 39082CE2CA8065D786A75F5C09CFF2C0 /* AMapFoundation */;
-			targetProxy = 593C69642D80E3F93AE1853025993C87 /* PBXContainerItemProxy */;
+			targetProxy = 77EEDC4DD9B8A97289E77AB8034BCD5C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -938,23 +946,6 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Profile;
-		};
-		050E08B7C8F73AB157E4943967DC237D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E1DC4562CB02EF8A995AF7BB6A7E098 /* AMapFoundation.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
 		};
 		1110BF8B5FDD0A1C7384F0BAB4BD793F /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -984,14 +975,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		2451C7B65C3DE43F0A88BC97BAE9D92E /* Debug */ = {
+		2041214FC3EABB0C44890FB9245B737B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6DCC3CA483F8EFF84FD459CB0D8D6931 /* flutter_2d_amap.debug.xcconfig */;
+			baseConfigurationReference = D7E71C7427D47D56A2F62E2F6DD3CA16 /* flutter_2d_amap.release.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -999,11 +991,11 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "$(inherited) i386";
 				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
-					"\"/Users/developer/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64_armv7\"",
+					"\"/Users/developer/flutter/bin/cache/artifacts/engine/ios-release/Flutter.xcframework/ios-arm64_armv7\"",
 					"$(inherited)",
 				);
 				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = (
-					"\"/Users/developer/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64_x86_64-simulator\"",
+					"\"/Users/developer/flutter/bin/cache/artifacts/engine/ios-release/Flutter.xcframework/ios-arm64_x86_64-simulator\"",
 					"$(inherited)",
 				);
 				GCC_PREFIX_HEADER = "Target Support Files/flutter_2d_amap/flutter_2d_amap-prefix.pch";
@@ -1023,9 +1015,10 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				"VALID_ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
 			};
-			name = Debug;
+			name = Release;
 		};
 		25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1110,7 +1103,7 @@
 			};
 			name = Release;
 		};
-		36687562CC61D39606320D1A7A68C756 /* Debug */ = {
+		304C0A02F02B36F3FB2818C6828E6B0E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 600F798190A4C3E8182B1421E934F717 /* AMapFoundation.debug.xcconfig */;
 			buildSettings = {
@@ -1121,6 +1114,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1154,6 +1148,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1238,62 +1233,6 @@
 			};
 			name = Release;
 		};
-		5B7F85114BD4D0FA334201B4048765C3 /* Profile */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7E71C7427D47D56A2F62E2F6DD3CA16 /* flutter_2d_amap.release.xcconfig */;
-			buildSettings = {
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "$(inherited) i386";
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
-					"\"/Users/developer/flutter/bin/cache/artifacts/engine/ios-release/Flutter.xcframework/ios-arm64_armv7\"",
-					"$(inherited)",
-				);
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = (
-					"\"/Users/developer/flutter/bin/cache/artifacts/engine/ios-release/Flutter.xcframework/ios-arm64_x86_64-simulator\"",
-					"$(inherited)",
-				);
-				GCC_PREFIX_HEADER = "Target Support Files/flutter_2d_amap/flutter_2d_amap-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MODULEMAP_FILE = Headers/Public/flutter_2d_amap/flutter_2d_amap.modulemap;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					Flutter,
-				);
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = flutter_2d_amap;
-				PRODUCT_NAME = flutter_2d_amap;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				"VALID_ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
-			};
-			name = Profile;
-		};
-		722E7251C01A2AB2EF7CB327C443B69B /* Profile */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E1DC4562CB02EF8A995AF7BB6A7E098 /* AMapFoundation.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Profile;
-		};
 		7D1C46FFAD06FD2FC2040D446A015270 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C8625EBFE2F402A2433D1A2220A3F5D /* AMap2DMap.release.xcconfig */;
@@ -1308,45 +1247,6 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		81C0930D067A350B868659BC30B9B6A6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7E71C7427D47D56A2F62E2F6DD3CA16 /* flutter_2d_amap.release.xcconfig */;
-			buildSettings = {
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "$(inherited) i386";
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
-					"\"/Users/developer/flutter/bin/cache/artifacts/engine/ios-release/Flutter.xcframework/ios-arm64_armv7\"",
-					"$(inherited)",
-				);
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = (
-					"\"/Users/developer/flutter/bin/cache/artifacts/engine/ios-release/Flutter.xcframework/ios-arm64_x86_64-simulator\"",
-					"$(inherited)",
-				);
-				GCC_PREFIX_HEADER = "Target Support Files/flutter_2d_amap/flutter_2d_amap-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MODULEMAP_FILE = Headers/Public/flutter_2d_amap/flutter_2d_amap.modulemap;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					Flutter,
-				);
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = flutter_2d_amap;
-				PRODUCT_NAME = flutter_2d_amap;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				"VALID_ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
 			};
 			name = Release;
 		};
@@ -1370,6 +1270,7 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACH_O_TYPE = staticlib;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -1511,6 +1412,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1580,10 +1482,123 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
+		};
+		E1F20A4782FF7AB8512CE657C37E9A6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E1DC4562CB02EF8A995AF7BB6A7E098 /* AMapFoundation.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F984CBCC7CD7B246147350EF4BA8A09B /* Profile */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7E71C7427D47D56A2F62E2F6DD3CA16 /* flutter_2d_amap.release.xcconfig */;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "$(inherited) i386";
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
+					"\"/Users/developer/flutter/bin/cache/artifacts/engine/ios-release/Flutter.xcframework/ios-arm64_armv7\"",
+					"$(inherited)",
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"\"/Users/developer/flutter/bin/cache/artifacts/engine/ios-release/Flutter.xcframework/ios-arm64_x86_64-simulator\"",
+					"$(inherited)",
+				);
+				GCC_PREFIX_HEADER = "Target Support Files/flutter_2d_amap/flutter_2d_amap-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MODULEMAP_FILE = Headers/Public/flutter_2d_amap/flutter_2d_amap.modulemap;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					Flutter,
+				);
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = flutter_2d_amap;
+				PRODUCT_NAME = flutter_2d_amap;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				"VALID_ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
+			};
+			name = Profile;
+		};
+		FDF8DE7AFC2CB480A4D3BE0A8A4AC709 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DCC3CA483F8EFF84FD459CB0D8D6931 /* flutter_2d_amap.debug.xcconfig */;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "$(inherited) i386";
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
+					"\"/Users/developer/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64_armv7\"",
+					"$(inherited)",
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"\"/Users/developer/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64_x86_64-simulator\"",
+					"$(inherited)",
+				);
+				GCC_PREFIX_HEADER = "Target Support Files/flutter_2d_amap/flutter_2d_amap-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MODULEMAP_FILE = Headers/Public/flutter_2d_amap/flutter_2d_amap.modulemap;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					Flutter,
+				);
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = flutter_2d_amap;
+				PRODUCT_NAME = flutter_2d_amap;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				"VALID_ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
+			};
+			name = Debug;
+		};
+		FE9AA7ECDB825BB585EDB056061648CF /* Profile */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E1DC4562CB02EF8A995AF7BB6A7E098 /* AMapFoundation.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Profile;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1608,6 +1623,16 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		49EC60776AB3C3D2BF6492B553351B52 /* Build configuration list for PBXAggregateTarget "AMapFoundation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				304C0A02F02B36F3FB2818C6828E6B0E /* Debug */,
+				FE9AA7ECDB825BB585EDB056061648CF /* Profile */,
+				E1F20A4782FF7AB8512CE657C37E9A6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4EC22EB68A4CFF8B71F1AD669D3B48B9 /* Build configuration list for PBXNativeTarget "Pods-Runner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1618,12 +1643,12 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5FAB54A34A6AF6E029D2D45BA3F44469 /* Build configuration list for PBXNativeTarget "flutter_2d_amap" */ = {
+		8A3572CD79FC91C53ED7659FFA0F69B2 /* Build configuration list for PBXNativeTarget "flutter_2d_amap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2451C7B65C3DE43F0A88BC97BAE9D92E /* Debug */,
-				5B7F85114BD4D0FA334201B4048765C3 /* Profile */,
-				81C0930D067A350B868659BC30B9B6A6 /* Release */,
+				FDF8DE7AFC2CB480A4D3BE0A8A4AC709 /* Debug */,
+				F984CBCC7CD7B246147350EF4BA8A09B /* Profile */,
+				2041214FC3EABB0C44890FB9245B737B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1654,16 +1679,6 @@
 				CBC431ACCAB057A16DDBDBCA28031377 /* Debug */,
 				4A38A8A8D6079623D3630ADB02272BD1 /* Profile */,
 				7D1C46FFAD06FD2FC2040D446A015270 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D5FCEBB3E8E0DFFD806A242EAF061F51 /* Build configuration list for PBXAggregateTarget "AMapFoundation" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				36687562CC61D39606320D1A7A68C756 /* Debug */,
-				722E7251C01A2AB2EF7CB327C443B69B /* Profile */,
-				050E08B7C8F73AB157E4943967DC237D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

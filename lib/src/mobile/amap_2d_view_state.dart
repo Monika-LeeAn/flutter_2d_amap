@@ -30,7 +30,7 @@ class AMap2DViewState extends State<AMap2DView> {
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       return UiKitView(
-        viewType: 'plugins.zhangyu/flutter_2d_multiple_annotation_uiview',
+        viewType: 'plugins.weilu/flutter_2d_amap',
         onPlatformViewCreated: _onPlatformViewCreated,
         creationParams: _CreationParams.fromWidget(widget).toMap(),
         creationParamsCodec: const StandardMessageCodec(),

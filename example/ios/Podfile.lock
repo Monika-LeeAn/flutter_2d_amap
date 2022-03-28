@@ -1,0 +1,43 @@
+PODS:
+  - AMap2DMap (5.6.1):
+    - AMapFoundation (~> 1.4)
+  - AMapFoundation (1.6.9)
+  - AMapLocation (2.8.0):
+    - AMapFoundation (~> 1.6.9)
+  - AMapSearch (7.9.0):
+    - AMapFoundation (~> 1.6.6)
+  - Flutter (1.0.0)
+  - flutter_2d_amap (0.0.2):
+    - AMap2DMap (= 5.6.1)
+    - AMapLocation (= 2.8.0)
+    - AMapSearch (= 7.9.0)
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_2d_amap (from `.symlinks/plugins/flutter_2d_amap/ios`)
+
+SPEC REPOS:
+  trunk:
+    - AMap2DMap
+    - AMapFoundation
+    - AMapLocation
+    - AMapSearch
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_2d_amap:
+    :path: ".symlinks/plugins/flutter_2d_amap/ios"
+
+SPEC CHECKSUMS:
+  AMap2DMap: cac76bc057de18a1641f34df6b50bf5bc6b23571
+  AMapFoundation: 8d8ecbb0b2e9ce5487995360d26c885d94642bfd
+  AMapLocation: 5ef44a1117be7dc541cb7a7d43d03c5ee91e4387
+  AMapSearch: 94cff5f6ab7233c1639111e486861ac2acea6d4b
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  flutter_2d_amap: c6de91ef22a424019b977b3d59a25ce3caceb7df
+
+PODFILE CHECKSUM: 8e679eca47255a8ca8067c4c67aab20e64cb974d
+
+COCOAPODS: 1.11.2

@@ -15,6 +15,9 @@
 #import "Flutter2dAmapPlugin.h"
 #import "FlutterAMap2D.h"
 #import "FlutterAMap2DMultipleAnnotation.h"
+#import "ZYCityAnnotationView.h"
+#import "ZYMerchantAnnotationView.h"
+#import "ZYProvinceAnnotationView.h"
 
 FOUNDATION_EXPORT double flutter_2d_amapVersionNumber;
 FOUNDATION_EXPORT const unsigned char flutter_2d_amapVersionString[];

@@ -7,7 +7,7 @@ class SecondViewPage extends StatefulWidget {
 }
 
 class _SecondViewPageState extends State<SecondViewPage> {
-  late AMap2DMultipleAnnotationController? _aMap2DController;
+  late AMap2DLimitController _aMap2DController;
 
   @override
   Widget build(BuildContext context) {
@@ -18,40 +18,40 @@ class _SecondViewPageState extends State<SecondViewPage> {
       body: SafeArea(
           child: Stack(
         children: [
-          AMap2DMultipleAnnotationView(
-            didSingleTappedAtCoordinate: (controller, args) {
-              print('这里打印传递过来的参数 $args');
-            },
-            didClickAnnotationCallBack: (controller, args) {
-              print('这里打印传递过来的参数 $args');
-            },
+          AMap2DLimitView(
+            // didSingleTappedAtCoordinate: (controller, args) {
+            //   print('这里打印传递过来的参数 $args');
+            // },
+            // didClickAnnotationCallBack: (controller, args) {
+            //   print('这里打印传递过来的参数 $args');
+            // },
             onAMap2DViewCreated: (controller) {
               _aMap2DController = controller;
             },
-            onAmap2DViewRatioChanged: (controller, args) {
-              print('我在设置的回调方法中发现了,地图的比例尺发生了变化');
-              //flutter: {lat: 32.89999696880566, lng: 113.2234269673306, ratioLevel: 1}
-              print(args);
-              // controller.move(lat, lon);
-              ///{lat: 25.678315360996322, lng: 117.32948434831536, ratioLevel: 2}
-              // print(provice1);
-            },
+            // onAmap2DViewRatioChanged: (controller, args) {
+            //   print('我在设置的回调方法中发现了,地图的比例尺发生了变化');
+            //   //flutter: {lat: 32.89999696880566, lng: 113.2234269673306, ratioLevel: 1}
+            //   print(args);
+            //   // controller.move(lat, lon);
+            //   ///{lat: 25.678315360996322, lng: 117.32948434831536, ratioLevel: 2}
+            //   // print(provice1);
+            // },
           ),
-          Positioned(
-            right: 10,
-            left: 10,
-            bottom: 100.0,
-            child: Container(
-              color: Colors.blue,
-              child: const Text('第一个组件'),
-            ),
-          ),
+          // Positioned(
+          //   right: 10,
+          //   left: 10,
+          //   bottom: 100.0,
+          //   child: Container(
+          //     color: Colors.blue,
+          //     child: const Text('第一个组件'),
+          //   ),
+          // ),
           Positioned(
             child: MaterialButton(
               child: const Text('给地图设置标注'),
               onPressed: () {
                 print('准备调用 给地图设置标注的方法');
-                _aMap2DController?.setAnnomations(provice1, '1');
+                _aMap2DController?.setAnnomations(provice1, '3');
               },
             ),
           )

@@ -2,7 +2,7 @@
 #import "AMapFoundationKit/AMapFoundationKit.h"
 #import "FlutterAMap2D.h"
 #import "FlutterAMap2DMultipleAnnotation.h"
-
+#import "FlutterAMap2DLimit.h"
 @implementation Flutter2dAmapPlugin
 
 /// 每个组件通过实现该方法拿到FlutterPluginRegistrar进而拿到FlutterBinaryMessenger对象
@@ -31,6 +31,12 @@
   FlutterAMap2DMultipleAnnotationFactory* aMap2DMultipleAnnotationFactory =
   [[FlutterAMap2DMultipleAnnotationFactory alloc] initWithMessenger:registrar.messenger];
   [registrar registerViewFactory:aMap2DMultipleAnnotationFactory withId:@"plugins.zhangyu/flutter_2d_multiple_annotation_uiview"];
+    
+    
+    //6.地理围栏
+    FlutterAMap2DLimitFactory* aMap2DLimitFactory =
+    [[FlutterAMap2DLimitFactory alloc] initWithMessenger:registrar.messenger];
+    [registrar registerViewFactory:aMap2DLimitFactory withId:@"plugins.zhangyu/flutter_2d_limit_uiview"];
 
 }
 

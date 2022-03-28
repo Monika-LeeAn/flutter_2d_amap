@@ -27,7 +27,10 @@
 @property (strong, nonatomic) CLLocationManager *mannger;
 @property (strong, nonatomic) AMapLocationManager *locationManager;
 @property (strong, nonatomic) AMapSearchAPI *search;
-@property (nonatomic, strong) UIButton *gpsButton;
+//@property (nonatomic, strong) UIButton *gpsButton;
+//@property (nonatomic, strong) UIButton *provinceButton;
+//@property (nonatomic, strong) UIButton *cityButton;
+
 @property (nonatomic, strong) NSMutableArray *annotations;
 
 @property (nonatomic, strong) NSNumber *startLevel;
@@ -84,11 +87,20 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
             
             // [self.view addSubview:_mapView];
             
-            self.gpsButton = [self makeGPSButtonView];
-            self.gpsButton.center = CGPointMake(CGRectGetMidX(self.gpsButton.bounds) + 10,
-                                                self.view.bounds.size.height -  CGRectGetMidY(self.gpsButton.bounds) - 20);
-            [_mapView addSubview:self.gpsButton];
-            self.gpsButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
+//            self.provinceButton = [self getProvinceButtonView];
+//            self.provinceButton.center = CGPointMake([[UIScreen mainScreen] bounds].size.width - 30, 20);
+//            [_mapView addSubview:self.provinceButton];
+//            self.provinceButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
+//
+//
+//        self.cityButton = [self getCityButtonView];
+//        self.cityButton.center = CGPointMake([[UIScreen mainScreen] bounds].size.width - 30, 20);
+//        [_mapView addSubview:self.cityButton];
+//        self.cityButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
+        
+        
+        
+        
             
     }
     return self;
@@ -100,7 +112,48 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
 }
  
 
-- (UIButton *)makeGPSButtonView {
+//- (UIButton *)makeGPSButtonView {
+//    UIButton *ret = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+//    ret.backgroundColor = [UIColor whiteColor];
+//    ret.layer.cornerRadius = 4;
+//
+//    [ret setImage:[UIImage imageNamed:@"gpsStat1"] forState:UIControlStateNormal];
+//    [ret addTarget:self action:@selector(gpsAction) forControlEvents:UIControlEventTouchUpInside];
+//    return ret;
+//}
+//
+//- (UIButton *)getProvinceButtonView {
+//    UIButton *ret = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+//    ret.backgroundColor = [UIColor whiteColor];
+//    ret.layer.cornerRadius = 4;
+//
+//    [ret setImage:[UIImage imageNamed:@"gpsStat1"] forState:UIControlStateNormal];
+//    [ret setTitle:@"省" forState:UIControlStateNormal];
+//    [ret setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
+//    [ret setTitle:@"省" forState:UIControlStateNormal];
+//    [ret setTitleColor:[UIColor systemBlueColor] forState:UIControlStateHighlighted];
+//    [ret addTarget:self action:@selector(gpsAction) forControlEvents:UIControlEventTouchUpInside];
+//    return ret;
+//}
+//
+//- (UIButton *)getCityButtonView {
+//    UIButton *ret = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+//    ret.backgroundColor = [UIColor whiteColor];
+//    ret.layer.cornerRadius = 4;
+//    [ret setTitle:@"市" forState:UIControlStateNormal];
+//    [ret setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
+//    [ret setTitle:@"市" forState:UIControlStateNormal];
+//    [ret setTitleColor:[UIColor systemBlueColor] forState:UIControlStateHighlighted];
+////    [ret setImage:[UIImage imageNamed:@"gpsStat1"] forState:UIControlStateNormal];
+//    [ret addTarget:self action:@selector(getProvince) forControlEvents:UIControlEventTouchUpInside];
+//    return ret;
+//}
+
+- (void)getProvince{
+    
+}
+
+- (UIButton *)getmerChantButtonView {
     UIButton *ret = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     ret.backgroundColor = [UIColor whiteColor];
     ret.layer.cornerRadius = 4;
@@ -111,14 +164,12 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
 }
 
 
-- (void)gpsAction {
-    if(_mapView.userLocation.updating && _mapView.userLocation.location) {
-        [_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
-        [self.gpsButton setSelected:YES];
-    }
-
-
-}
+//- (void)gpsAction {
+//    if(_mapView.userLocation.updating && _mapView.userLocation.location) {
+//        [_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
+//        [self.gpsButton setSelected:YES];
+//    }
+//}
 
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     switch (status) {
@@ -372,9 +423,6 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
                                     @"model" : pView.modelDictionry,
                                     @"level": _currentLevel,
                                     };
-        pView.disclosureBlock = ^{
-            [self->_mapView setCenterCoordinate:CLLocationCoordinate2DMake(view.annotation.coordinate.latitude + 0.1, view.annotation.coordinate.longitude + 0.1) animated:YES];
-        };
         [_channel invokeMethod:@"didClickedAnnation" arguments:arguments];
     }else if ([view isKindOfClass:[ZYMerchantAnnotationView class]]) {
 
@@ -421,6 +469,7 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
     }
 }
 
+
 /**
  * @brief 地图缩放结束后调用此接口
  * @param mapView       地图view
@@ -456,7 +505,8 @@ NSString* _types = @"010000|010100|020000|030000|040000|050000|050100|060000|060
                                         @"lng" : [NSNumber numberWithDouble:_mapView.centerCoordinate.longitude],
                                         @"ratioLevel": _endLevel,
                                         };
-                        
+//            [_mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
+
             [_channel invokeMethod:@"ratioChanged" arguments:arguments];
 
 

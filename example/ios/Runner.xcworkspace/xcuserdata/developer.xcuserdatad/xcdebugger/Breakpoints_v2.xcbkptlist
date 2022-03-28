@@ -67,16 +67,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "56BCF689-B67C-460E-98B8-C20534496039"
+            uuid = "046B0A94-7CB3-44EC-BC32-18DB63973095"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../ios/Classes/ZYProvinceAnnotationView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
-            landmarkName = "-didSelectAnnotationViewInMap:"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-initWithAnnotation:reuseIdentifier:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,8 +90,8 @@
             filePath = "../../ios/Classes/FlutterAMap2DMultipleAnnotation.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "462"
-            endingLineNumber = "462"
+            startingLineNumber = "504"
+            endingLineNumber = "504"
             landmarkName = "-mapView:mapDidZoomByUser:"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,10 +106,10 @@
             filePath = "../../ios/Classes/ZYProvinceAnnotationView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "ZYProvinceAnnotationView"
-            landmarkType = "3">
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-setupMainTextView"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -122,42 +122,58 @@
             filePath = "../../ios/Classes/FlutterAMap2DMultipleAnnotation.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "432"
-            endingLineNumber = "432"
-            landmarkName = "-mapView:mapDidZoomByUser:"
-            landmarkType = "7">
+            startingLineNumber = "474"
+            endingLineNumber = "474"
+            landmarkName = "FlutterAMap2DMultipleAnnotationController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9C9C5555-1A31-4CC7-9189-288C9E2BE315"
+            uuid = "5150B483-29B2-481B-953F-1BA256E83842"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../ios/Classes/ZYProvinceAnnotationView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-didTapDisclosureButton"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-initWithAnnotation:reuseIdentifier:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E5EC466E-73FD-4A01-B654-67BF2DD86629"
+            uuid = "BF99790C-4EE2-466B-BC84-57CDCD2329E8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../ios/Classes/ZYProvinceAnnotationView.m"
+            filePath = "../../ios/Classes/FlutterAMap2DLimit.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "-didTapDisclosureButton"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "-hasPermission"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "316C8965-651D-4F42-9E9D-63D206D559F5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../ios/Classes/FlutterAMap2DLimit.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "FlutterAMap2DLimitController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
