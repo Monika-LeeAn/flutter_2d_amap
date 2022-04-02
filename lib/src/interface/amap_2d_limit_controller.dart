@@ -3,4 +3,6 @@ abstract class AMap2DLimitController {
 
   ///设置标注集合
   Future<void> setAnnomations(List entities, String level);
+
+  Future<void> getRegionsStatus();
 }

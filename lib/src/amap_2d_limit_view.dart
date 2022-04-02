@@ -7,7 +7,14 @@ import 'package:flutter_2d_amap/src/mobile/amap_2d_limit_state.dart';
 import 'model/poi_search_model.dart';
 
 typedef AMap2DLimitViewCreatedCallback = void Function(
-    AMap2DLimitController controller);
+    AMap2DLimitController controller,  Map<dynamic, dynamic> );
+
+typedef AMap2DLimitViewRegionStatusCallback = void Function(
+    AMap2DLimitController controller,  Map<dynamic, dynamic>);
+
+
+typedef AMap2DLimitViewLocationUpdateCallback = void Function(
+    AMap2DLimitController controller,  Map<dynamic, dynamic>);
 
 class AMap2DLimitView extends StatefulWidget {
   const AMap2DLimitView({
@@ -15,10 +22,16 @@ class AMap2DLimitView extends StatefulWidget {
     this.isPoiSearch = true,
     this.onPoiSearched,
     this.onAMap2DViewCreated,
+    this.onAmap2DLimitRegionStatusChanged,
+    this.onAmap2DLimitLocationUpdateChanged,
   }) : super(key: key);
 
   final bool isPoiSearch;
   final AMap2DLimitViewCreatedCallback? onAMap2DViewCreated;
+  final AMap2DLimitViewRegionStatusCallback? onAmap2DLimitRegionStatusChanged;
+  final AMap2DLimitViewLocationUpdateCallback? onAmap2DLimitLocationUpdateChanged;
+
+
   final Function(List<PoiSearch>)? onPoiSearched;
 
   @override

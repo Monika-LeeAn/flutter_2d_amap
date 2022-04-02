@@ -19,13 +19,28 @@ class _SecondViewPageState extends State<SecondViewPage> {
           child: Stack(
         children: [
           AMap2DLimitView(
+              onAmap2DLimitLocationUpdateChanged: (controller,  Map<dynamic, dynamic> args) {
+                print('状态改变~~~~ 地理位置发生改变');
+                print(args);
+              },
+            onAmap2DLimitRegionStatusChanged: (controller,  Map<dynamic, dynamic> args) {
+              print('状态改变~~~~ 围栏状态改变');
+              print(args);
+            },
             // didSingleTappedAtCoordinate: (controller, args) {
             //   print('这里打印传递过来的参数 $args');
             // },
             // didClickAnnotationCallBack: (controller, args) {
             //   print('这里打印传递过来的参数 $args');
             // },
-            onAMap2DViewCreated: (controller) {
+            onAMap2DViewCreated: (controller,  Map<dynamic, dynamic> args) {
+              print('看一下传回来的定位 $args',);
+              print('看一下传回来的定位 $args',);
+              print('看一下传回来的定位 $args',);
+              print('看一下传回来的定位 $args',);
+              print('看一下传回来的定位 $args',);
+              print('看一下传回来的定位 $args',);
+              print('看一下传回来的定位 $args',);
               _aMap2DController = controller;
             },
             // onAmap2DViewRatioChanged: (controller, args) {
@@ -54,7 +69,26 @@ class _SecondViewPageState extends State<SecondViewPage> {
                 _aMap2DController?.setAnnomations(provice1, '3');
               },
             ),
-          )
+          ),
+          Positioned(
+            top: 100,
+            child: MaterialButton(
+              child: const Text('给地图设置标注'),
+              onPressed: () {
+                print('准备调用 给地图设置标注的方法');
+                _aMap2DController?.setAnnomations(provice1, '3');
+              },
+            ),
+          ),
+          Positioned(
+            child: MaterialButton(
+              child: const Text('获取各个围栏当前的状态'),
+              onPressed: () {
+                print('准备调用 给地图设置标注的方法');
+                _aMap2DController?.getRegionsStatus();
+              },
+            ),
+          ),
         ],
       )),
     );
@@ -89,15 +123,15 @@ var provice1 = [
   {
     'provinceCode': '1010000',
     'provinceName': '北京市',
-    'longitude': 116.405289,
-    'latitude': 39.904987,
+    'longitude': 121.510377,
+    'latitude': 31.244105,
     'merchantNum': 550
   },
   {
     'provinceCode': '1100000',
     'provinceName': '上海市',
     'longitude': 121.472641,
-    'latitude': 31.231707,
+    'latitude': 31.201707,
     'merchantNum': 1500
   },
   {

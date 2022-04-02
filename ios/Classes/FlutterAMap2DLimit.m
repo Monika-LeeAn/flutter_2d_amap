@@ -24,22 +24,24 @@
 #import "ZYCityAnnotationView.h"
 #import "ZYMerchantAnnotationView.h"
 
+#import <AMapLocationKit/AMapLocationKit.h>
 
-@interface FlutterAMap2DLimitController() <AMapLocationManagerDelegate, CLLocationManagerDelegate, MAMapViewDelegate>
+@interface FlutterAMap2DLimitController() <AMapLocationManagerDelegate, CLLocationManagerDelegate, MAMapViewDelegate, AMapGeoFenceManagerDelegate>
 
 @property (strong, nonatomic) CLLocationManager *mannger;
 @property (strong, nonatomic) AMapLocationManager *locationManager;
 
 @property (nonatomic, strong) NSMutableArray *annotations;
 
-@property (nonatomic, strong) NSNumber *startLevel;
-@property (nonatomic, strong) NSNumber *endLevel;
+@property (nonatomic, assign) BOOL isNotifyLocation;
 
 @property (nonatomic, strong) NSMutableArray *flutterToMapAnnotationsModels;
-@property (nonatomic, copy) NSString *currentLevel;
 
 @property (nonatomic, strong) NSArray *circles;
 
+@property (nonatomic, strong)AMapGeoFenceManager *geoFenceManager;
+
+@property (nonatomic, strong) NSDate* theDate;
 @end
 
 
@@ -49,26 +51,9 @@
     int64_t _viewId;
     FlutterMethodChannel* _channel;
       
-    MAPointAnnotation* _pointAnnotation;
 }
 
 
-- (void)initCircles {
-    NSMutableArray *arr = [NSMutableArray array];
-    /* Circle. */
-    MACircle *circle1 = [MACircle circleWithCenterCoordinate:CLLocationCoordinate2DMake(31.245105, 121.516377) radius:200];
-    [arr addObject:circle1];
-    
-    
-    MACircle *circle2 = [MACircle circleWithCenterCoordinate:CLLocationCoordinate2DMake(31.244105, 121.510377) radius:200];
-    [arr addObject:circle2];
-    
-    MACircle *circle3 = [MACircle circleWithCenterCoordinate:CLLocationCoordinate2DMake(31.245105, 121.496377) radius:200];
-    [arr addObject:circle3];
-    
-    
-    self.circles = [NSArray arrayWithArray:arr];
-}
 
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -76,10 +61,12 @@
                     arguments:(id _Nullable)args
               binaryMessenger:(NSObject<FlutterBinaryMessenger>*)messenger {
     if ([super init]) {
+        
+        
+        _isNotifyLocation = true;
+      
+        _theDate = [NSDate date];
 
-        _endLevel = [NSNumber numberWithInt:1];
-
-        [self initCircles];
         
         _viewId = viewId;
         NSString* channelName = [NSString stringWithFormat:@"plugins.zhangyu/flutter_2d_limit_%lld", viewId];
@@ -94,12 +81,40 @@
             _mapView.delegate = self;
             _mapView.maxZoomLevel = 18.0;
             _mapView.minZoomLevel = 3;
-            [_mapView setZoomLevel:12.0 animated:true];
+        
             
-            // 请求定位权限
-            self.mannger =  [[CLLocationManager alloc] init];
-            self.mannger.delegate = self;
-            [self.mannger requestWhenInUseAuthorization];
+//            // 请求定位权限
+//            self.mannger =  [[CLLocationManager alloc] init];
+//            self.mannger.delegate = self;
+//            [self.mannger requestWhenInUseAuthorization];
+        
+        
+        
+        
+        ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
+        _mapView.showsUserLocation = YES;
+        _mapView.userTrackingMode = MAUserTrackingModeFollow;
+        _mapView.showTraffic = FALSE;
+        _mapView.compassOrigin= CGPointMake(_mapView.compassOrigin.x, 52); //设置指南针位置
+        _mapView.scaleOrigin= CGPointMake(_mapView.scaleOrigin.x + 20, _mapView.frame.size.height - 30);  //设置比例尺位置
+
+        /// 初始化定位
+        self.locationManager = [[AMapLocationManager alloc] init];
+        self.locationManager.delegate = self;
+        /// 开始定位
+        [self.locationManager startUpdatingLocation];
+        /// 初始化搜索
+       
+        _mapView.zoomLevel = 15;
+        
+        [_mapView setZoomLevel:15.0 animated:true];
+
+            //地理围栏
+        self.geoFenceManager = [[AMapGeoFenceManager alloc] init];
+        self.geoFenceManager.delegate = self;
+        self.geoFenceManager.activeAction = AMapGeoFenceActiveActionInside | AMapGeoFenceActiveActionOutside | AMapGeoFenceActiveActionStayed; //设置希望侦测的围栏触发行为，默认是侦测用户进入围栏的行为，即AMapGeoFenceActiveActionInside，这边设置为进入，离开，停留（在围栏内10分钟以上），都触发回调
+        self.geoFenceManager.allowsBackgroundLocationUpdates = YES;  //允许后台定位
+
     }
     return self;
 }
@@ -120,7 +135,63 @@
     return ret;
 }
 
+//1、获取围栏创建后的回调
+- (void)amapGeoFenceManager:(AMapGeoFenceManager *)manager didAddRegionForMonitoringFinished:(NSArray<AMapGeoFenceRegion *> *)regions customID:(NSString *)customID error:(NSError *)error {
+    if (error) {
+        NSLog(@"创建失败 %@",error);
+    } else {
+        NSLog(@"创建成功---%@", customID);
+        
+        BOOL isS = [manager startTheGeoFenceRegion:regions.firstObject];
+        
+        NSLog(@"开始??? ");
 
+    }
+}
+
+
+//2、围栏状态改变时的回调
+- (void)amapGeoFenceManager:(AMapGeoFenceManager *)manager didGeoFencesStatusChangedForRegion:(AMapGeoFenceRegion *)region customID:(NSString *)customID error:(NSError *)error {
+    
+    
+    //
+    NSLog(@"围栏状态---%@", customID);
+
+    if (error) {
+        NSLog(@"status changed error %@",error);
+    }else{
+        NSNumber *num = @0;
+        if (region.regionType == AMapGeoFenceRegionStatusUnknown) {
+            num = @0;
+        } else if  (region.regionType == AMapGeoFenceRegionStatusInside) {
+            num = @1;
+        } else if  (region.regionType == AMapGeoFenceRegionStatusOutside) {
+            num = @2;
+        }else if  (region.regionType == AMapGeoFenceRegionStatusStayed) {
+            num = @3;
+        }
+        
+        NSDictionary* arguments = @{
+            @"fenceStatus": num,
+            @"customID":region.customID
+        };
+        [_channel invokeMethod:@"regionsCallBack" arguments:arguments];
+        NSLog(@"status changed success --%@--- %@",customID,[region description]);
+    }
+}
+
+
+//最后，移除围栏
+
+//- (void)removeTheGeoFenceRegion:(AMapGeoFenceRegion *)region; //移除指定围栏
+//- (void)removeGeoFenceRegionsWithCustomID:(NSString *)customID; //移除指定customID的围栏
+//- (void)removeAllGeoFenceRegions;  //移除所有围栏
+
+
+//- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location reGeocode:(AMapLocationReGeocode *)reGeocode {
+//
+//    NSLog(@"位置发生改变了");
+//}
 
 
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
@@ -187,8 +258,51 @@
     NSLog(@"iOS端调用 amapLocationManager:(AMapLocationManager *)manager didUpdateLocation");
     
     
+    [_mapView setZoomLevel:17 animated: YES];
+    CLLocationCoordinate2D center;
+    center.latitude = location.coordinate.latitude;
+    center.longitude = location.coordinate.longitude;
+    [_mapView setCenterCoordinate:center animated:YES];
+    
+    if (_isNotifyLocation) {
+        NSDictionary* arguments = @{
+                                    @"lat" : [NSNumber numberWithDouble:_mapView.centerCoordinate.latitude],
+                                    @"lng" : [NSNumber numberWithDouble:_mapView.centerCoordinate.longitude],
+                                    };
+        [_channel invokeMethod:@"didUpdateLocation" arguments:arguments];
+        
+        _isNotifyLocation= false;
+    }
+    
+    
+//    _theDate = [NSDate date];
+    NSDate *now = [NSDate date];
+    NSDateFormatter *fmt = [[NSDateFormatter alloc]init];
+   //日历对象（方便比较两个日期之间的差距）
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    // NSCalendarUnit 枚举代表想获得哪些差值
+    NSCalendarUnit unit = NSCalendarUnitYear |NSCalendarUnitWeekOfMonth |NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute |NSCalendarUnitSecond;
+   //计算两个日期之间的差值
+    NSDateComponents *cmps = [calendar components:unit fromDate:_theDate toDate:now  options:0];
+    
+    
+    NSString *str =  [NSString stringWithFormat:@"%ld秒钟前", cmps.second];
+    
+    NSLog(@"%@", str);
+    if (cmps.second > 5) {
+        _theDate = [NSDate date];
+        NSDictionary* arguments = @{
+                                    @"lat" : [NSNumber numberWithDouble:_mapView.centerCoordinate.latitude],
+                                    @"lng" : [NSNumber numberWithDouble:_mapView.centerCoordinate.longitude],
+                                    };
+        [_channel invokeMethod:@"noty_didUpdateLocation" arguments:arguments];
+    }
+  
     
 }
+
+
+
 
 
 //字典转Json
@@ -205,62 +319,57 @@
     return (bool)(locationStatus == kCLAuthorizationStatusAuthorizedWhenInUse || locationStatus == kCLAuthorizationStatusAuthorizedAlways);
 }
 
-- (void)drawMarkers:(CGFloat)lat lon:(CGFloat)lon {
-    if (self->_pointAnnotation == NULL) {
-        self->_pointAnnotation = [[MAPointAnnotation alloc] init];
-        self->_pointAnnotation.title = @"用户点击位置";
-        self->_pointAnnotation.coordinate = CLLocationCoordinate2DMake(lat, lon);
-        [self->_mapView addAnnotation:self->_pointAnnotation];
-    } else {
-        self->_pointAnnotation.coordinate = CLLocationCoordinate2DMake(lat, lon);
-    }
-}
-
-
 
 - (void)onMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
     if ([[call method] isEqualToString:@"location"]) {
         [self.locationManager startUpdatingLocation];
+        
+        [_mapView setZoomLevel:15 animated:true];
     } else if ([[call method] isEqualToString:@"setAnnomations"]){
         [_mapView removeAnnotations:self.annotations];
         NSLog(@"iOS端收到了 FLutter端 发送的setAnnomations方法");
-        
         NSMutableArray *mArray = [call arguments][@"entities"];
-        NSString *customMapLevel= [call arguments][@"customMapLevel"];
-        
-        _currentLevel = customMapLevel;
-
         self.flutterToMapAnnotationsModels = [mArray mutableCopy];
-        [self initAnnotations:mArray level:customMapLevel];
-        
-        // [_mapView addAnnotations:self.annotations];
-        // [_mapView showAnnotations:self.annotations  animated:YES];
+        [self initAnnotations:mArray ];
         [_mapView addOverlays:self.circles];
-        
         [_mapView setZoomLevel:15.0 animated:true];
+    } else if ([[call method] isEqualToString:@"getRegionsStatus"]) {
+        
+        
+        NSArray *array =  [_geoFenceManager geoFenceRegionsWithCustomID:nil];
+        
+        NSLog(@"~~~");
     }
 }
 
-- (void)initAnnotations:(NSMutableArray *)annotationsFormFlutter level:(NSString *)customMapLevel
-{
+
+- (void)initAnnotations:(NSMutableArray *)annotationsFormFlutter {
     self.annotations = [NSMutableArray array];
+    
+    NSMutableArray *arr = [NSMutableArray array];
+
         
     for (int i = 0; i < annotationsFormFlutter.count; ++i)
     {
         MAPointAnnotation *a1 = [[MAPointAnnotation alloc] init];
-        double lat = [annotationsFormFlutter[i][@"latitude"] doubleValue];
-        double lng = [annotationsFormFlutter[i][@"longitude"] doubleValue];
+        
+        //[5]    (null)    @"gpsLatitude" : @"31.243"
+        //[0]    (null)    @"gpsLongitude" : @"121.5092"
+        double lat = [annotationsFormFlutter[i][@"gpsLatitude"] doubleValue];
+        double lng = [annotationsFormFlutter[i][@"gpsLongitude"] doubleValue];
         CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
-        a1.coordinate = coordinate;
-        if ([customMapLevel  isEqual: @"1"]){
-                a1.title      = [NSString stringWithFormat:@"province:%d", i];
-        } else if ([customMapLevel isEqual: @"2"]){
-                a1.title      = [NSString stringWithFormat:@"city:%d", i];
-        } else if ([customMapLevel isEqual: @"3"]){
-                a1.title      = [NSString stringWithFormat:@"merchant:%d", i];
-        }
-        [self.annotations addObject:a1];
+        
+        MACircle *circle1 = [MACircle circleWithCenterCoordinate:coordinate radius:200];
+        [arr addObject:circle1];
+
+        
+        [self.geoFenceManager addCircleRegionForMonitoringWithCenter:coordinate radius:5000 customID:[NSString stringWithFormat:@"cirle_%d", i]];
     }
+    
+    
+    [_mapView addOverlays:arr];
+    
+//    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(39.908692, 116.397477); //天安门
 }
 
 

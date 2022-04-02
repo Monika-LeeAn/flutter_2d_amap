@@ -37,6 +37,10 @@
     FlutterAMap2DLimitFactory* aMap2DLimitFactory =
     [[FlutterAMap2DLimitFactory alloc] initWithMessenger:registrar.messenger];
     [registrar registerViewFactory:aMap2DLimitFactory withId:@"plugins.zhangyu/flutter_2d_limit_uiview"];
+    
+    
+    [AMapLocationManager updatePrivacyShow:1 privacyInfo:1];
+    [AMapLocationManager updatePrivacyAgree:1];
 
 }
 

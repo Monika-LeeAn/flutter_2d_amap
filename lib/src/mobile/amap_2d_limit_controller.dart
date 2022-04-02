@@ -19,40 +19,46 @@ class AMapMobile2DLimitController extends AMap2DLimitController {
   Future<dynamic> _handleMethod(MethodCall call) async {
     final String method = call.method;
     switch (method) {
-      // case 'didClickedAnnation':
-      //   {
-      //     print('Flutter收到用户在iOS端点击某个标注的方法');
-      //     if (_widget.didClickAnnotationCallBack != null) {
-      //       final Map args = call.arguments as Map<dynamic, dynamic>;
-      //       print(args);
-      //       _widget.didClickAnnotationCallBack!(this, args);
-      //     }
-      //   }
-      //   break;
+      case 'regionsCallBack':
+        {
+          // print('Flutter收到用户在iOS端点击某个标注的方法');
+          // if (_widget.didClickAnnotationCallBack != null) {
 
-      // case 'ratioChanged':
-      //   {
-      //     print('flutter 收到 iOS端发送的消息--ratioChanged');
-      //     if (_widget.onAmap2DViewRatioChanged != null) {
-      //       final Map args = call.arguments as Map<dynamic, dynamic>;
-      //       print(args);
-      //       print('iOS视图创建完成5, widget.onAmap2DViewRatioChanged!(controller)');
-      //       _widget.onAmap2DViewRatioChanged!(this, args);
-      //     }
-      //   }
-      //   break;
+            if (_widget.onAmap2DLimitRegionStatusChanged != null) {
+              final Map args = call.arguments as Map<dynamic, dynamic>;
+              print('状态改变的回调');
+              print(args);
+              _widget.onAmap2DLimitRegionStatusChanged!(this, args);
+            }
+          //   _widget.didClickAnnotationCallBack!(this, args);
+          // }
+        }
+        break;
 
-      // case 'didSingleTappedAtCoordinate':
-      //   {
-      //     print('flutter 收到 iOS端发送的消息--didSingleTappedAtCoordinate');
-      //     if (_widget.onAmap2DViewRatioChanged != null) {
-      //       final Map args = call.arguments as Map<dynamic, dynamic>;
-      //       print(args);
-      //       print('iOS视图创建完成5, widget.onAmap2DViewRatioChanged!(controller)');
-      //       _widget.onAmap2DViewRatioChanged!(this, args);
-      //     }
-      //   }
-      //   break;
+      case 'didUpdateLocation':
+        {
+          print('flutter 收到 iOS端发送的消息--ratioChanged');
+          if (_widget.onAMap2DViewCreated != null) {
+            final Map args = call.arguments as  Map<dynamic, dynamic>;
+            print(args);
+            print('iOS视图创建完成-第一次获取位置, widget.onAmap2DViewRatioChanged!(controller)');
+            _widget.onAMap2DViewCreated!(this, args);
+          }
+        }
+        break;
+      // }
+
+      case 'noty_didUpdateLocation':
+        {
+          print('flutter 收到 iOS端发送的消息--noty_didUpdateLocation');
+          if (_widget.onAmap2DLimitLocationUpdateChanged != null) {
+            final Map args = call.arguments as Map<dynamic, dynamic>;
+            print(args);
+            print('onAmap2DLimitLocationUpdateChanged!(controller)');
+            _widget.onAmap2DLimitLocationUpdateChanged!(this, args);
+          }
+        }
+        break;
 
       // case 'poiSearchResult':
       //   {
@@ -68,6 +74,12 @@ class AMapMobile2DLimitController extends AMap2DLimitController {
       //   }
     }
     return Future<dynamic>.value('');
+  }
+
+  @override
+  Future<void> getRegionsStatus() {
+    // TODO: implement getRegionsStatus
+    return _channel.invokeMethod('getRegionsStatus');
   }
 
   @override
