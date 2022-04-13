@@ -5,4 +5,6 @@ abstract class AMap2DLimitController {
   Future<void> setAnnomations(List entities, String level);
 
   Future<void> getRegionsStatus();
+
+  Future<void> setCompany(String lat, String lon);
 }

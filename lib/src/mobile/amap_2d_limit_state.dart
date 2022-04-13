@@ -29,11 +29,13 @@ class AMap2DLimitViewState extends State<AMap2DLimitView> {
     /// 自定义的一个方法,如果有这个函数,就调用这个函数
     print('iOS视图创建完成3, widget.onAMap2DViewCreated != null');
 
-
     // if (widget.onAmap2DViewRatioChanged != null) {
     //   print('iOS视图创建完成5, widget.onAmap2DViewRatioChanged!(controller)');
     //   widget.onAmap2DViewRatioChanged!(controller);
     // }
+    if (widget.onAmap2DLimitJustShowCompany != null) {
+      widget.onAmap2DLimitJustShowCompany!(controller);
+    }
   }
 
   @override

@@ -42,6 +42,8 @@
 @property (nonatomic, strong)AMapGeoFenceManager *geoFenceManager;
 
 @property (nonatomic, strong) NSDate* theDate;
+
+@property (nonatomic, assign) BOOL isOnlyShow;
 @end
 
 
@@ -262,7 +264,6 @@
     CLLocationCoordinate2D center;
     center.latitude = location.coordinate.latitude;
     center.longitude = location.coordinate.longitude;
-    [_mapView setCenterCoordinate:center animated:YES];
     
     if (_isNotifyLocation) {
         NSDictionary* arguments = @{
@@ -289,6 +290,9 @@
     NSString *str =  [NSString stringWithFormat:@"%ld秒钟前", cmps.second];
     
     NSLog(@"%@", str);
+    if (_isOnlyShow) {return;}
+    [_mapView setCenterCoordinate:center animated:YES];
+
     if (cmps.second > 5) {
         _theDate = [NSDate date];
         NSDictionary* arguments = @{
@@ -297,11 +301,7 @@
                                     };
         [_channel invokeMethod:@"noty_didUpdateLocation" arguments:arguments];
     }
-  
-    
 }
-
-
 
 
 
@@ -334,13 +334,53 @@
         [_mapView addOverlays:self.circles];
         [_mapView setZoomLevel:15.0 animated:true];
     } else if ([[call method] isEqualToString:@"getRegionsStatus"]) {
-        
-        
         NSArray *array =  [_geoFenceManager geoFenceRegionsWithCustomID:nil];
-        
         NSLog(@"~~~");
+    } else if ([[call method] isEqualToString:@"setCompany"]) {
+
+        [self.locationManager stopUpdatingLocation];
+
+        // [self.location location];
+        NSLog(@"iOS端收到了 FLutter端 发送的move方法");
+        NSString* lat = [call arguments][@"lat"];
+        NSString* lon = [call arguments][@"lon"];
+        CLLocationCoordinate2D center;
+        center.latitude = [lat doubleValue];
+        center.longitude = [lon doubleValue];
+//        [self->_mapView setCenterCoordinate:center animated:YES];
+//        [self drawMarkers:[lat doubleValue] lon:[lon doubleValue]];
+        
+        MAPointAnnotation *_pointAnnotation = [[MAPointAnnotation alloc] init];
+        _pointAnnotation.title = @"打卡地";
+        _pointAnnotation.coordinate = center;
+        [self->_mapView addAnnotation:_pointAnnotation];
+        
+        _isOnlyShow = YES;
+        
+        
+
+        
+        
+        __block FlutterAMap2DLimitController *weakSelf = self;
+        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC));
+        dispatch_after( dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakSelf->_mapView setZoomLevel:17.0 animated:true];
+        });
+        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+            [weakSelf->_mapView setCenterCoordinate: center animated:true];
+        });
+  
+        
+
+        
     }
 }
+
+-(void)showMarker {
+    
+}
+
+ 
 
 
 - (void)initAnnotations:(NSMutableArray *)annotationsFormFlutter {

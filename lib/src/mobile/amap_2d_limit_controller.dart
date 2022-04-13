@@ -24,12 +24,12 @@ class AMapMobile2DLimitController extends AMap2DLimitController {
           // print('Flutter收到用户在iOS端点击某个标注的方法');
           // if (_widget.didClickAnnotationCallBack != null) {
 
-            if (_widget.onAmap2DLimitRegionStatusChanged != null) {
-              final Map args = call.arguments as Map<dynamic, dynamic>;
-              print('状态改变的回调');
-              print(args);
-              _widget.onAmap2DLimitRegionStatusChanged!(this, args);
-            }
+          if (_widget.onAmap2DLimitRegionStatusChanged != null) {
+            final Map args = call.arguments as Map<dynamic, dynamic>;
+            print('状态改变的回调');
+            print(args);
+            _widget.onAmap2DLimitRegionStatusChanged!(this, args);
+          }
           //   _widget.didClickAnnotationCallBack!(this, args);
           // }
         }
@@ -39,9 +39,10 @@ class AMapMobile2DLimitController extends AMap2DLimitController {
         {
           print('flutter 收到 iOS端发送的消息--ratioChanged');
           if (_widget.onAMap2DViewCreated != null) {
-            final Map args = call.arguments as  Map<dynamic, dynamic>;
+            final Map args = call.arguments as Map<dynamic, dynamic>;
             print(args);
-            print('iOS视图创建完成-第一次获取位置, widget.onAmap2DViewRatioChanged!(controller)');
+            print(
+                'iOS视图创建完成-第一次获取位置, widget.onAmap2DViewRatioChanged!(controller)');
             _widget.onAMap2DViewCreated!(this, args);
           }
         }
@@ -91,5 +92,11 @@ class AMapMobile2DLimitController extends AMap2DLimitController {
   Future<void> setAnnomations(List entities, String level) async {
     return _channel.invokeMethod('setAnnomations',
         <String, dynamic>{'entities': entities, 'customMapLevel': level});
+  }
+
+  @override
+  Future<void> setCompany(String lat, String lon) async {
+    return _channel
+        .invokeMethod('setCompany', <String, dynamic>{'lat': lat, 'lon': lon});
   }
 }
