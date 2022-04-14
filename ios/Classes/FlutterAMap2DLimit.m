@@ -233,17 +233,17 @@
         MACircleRenderer *circleRenderer = [[MACircleRenderer alloc] initWithCircle:overlay];
         
         circleRenderer.lineWidth   = 4.f;
-        circleRenderer.strokeColor = [UIColor blueColor];
+        circleRenderer.strokeColor = [UIColor colorWithRed:203/255.0 green:223/255.0 blue:242/255.0 alpha:0.6];
         
         NSInteger index = [self.circles indexOfObject:overlay];
         if(index == 0) {
-            circleRenderer.fillColor   = [[UIColor redColor] colorWithAlphaComponent:0.3];
+            circleRenderer.fillColor   = [UIColor colorWithRed:203/255.0 green:223/255.0 blue:242/255.0 alpha:0.6];
         } else if(index == 1) {
-            circleRenderer.fillColor   = [[UIColor greenColor] colorWithAlphaComponent:0.3];
+            circleRenderer.fillColor   = [UIColor colorWithRed:203/255.0 green:223/255.0 blue:242/255.0 alpha:0.6];
         } else if(index == 2) {
-            circleRenderer.fillColor   = [[UIColor blueColor] colorWithAlphaComponent:0.3];
+            circleRenderer.fillColor   =[UIColor colorWithRed:203/255.0 green:223/255.0 blue:242/255.0 alpha:0.6];
         } else {
-            circleRenderer.fillColor   = [[UIColor yellowColor] colorWithAlphaComponent:0.3];
+            circleRenderer.fillColor   =[UIColor colorWithRed:203/255.0 green:223/255.0 blue:242/255.0 alpha:0.6];
         }
         
         return circleRenderer;
@@ -260,17 +260,29 @@
     NSLog(@"iOS端调用 amapLocationManager:(AMapLocationManager *)manager didUpdateLocation");
     
     
-    [_mapView setZoomLevel:17 animated: YES];
     CLLocationCoordinate2D center;
     center.latitude = location.coordinate.latitude;
     center.longitude = location.coordinate.longitude;
+
+    if (location.coordinate.latitude < 0 &&  location.coordinate.longitude > 170) {
+        return;
+    }
     
     if (_isNotifyLocation) {
+        [_mapView setZoomLevel:17 animated: YES];
+
+    
         NSDictionary* arguments = @{
-                                    @"lat" : [NSNumber numberWithDouble:_mapView.centerCoordinate.latitude],
-                                    @"lng" : [NSNumber numberWithDouble:_mapView.centerCoordinate.longitude],
+                                    @"lat" : [NSNumber numberWithDouble:location.coordinate.latitude],
+                                    @"lng" : [NSNumber numberWithDouble:location.coordinate.longitude],
                                     };
         [_channel invokeMethod:@"didUpdateLocation" arguments:arguments];
+
+        NSDictionary* arguments1 = @{
+                                    @"lat" : [NSNumber numberWithDouble:location.coordinate.latitude],
+                                    @"lng" : [NSNumber numberWithDouble:location.coordinate.longitude],
+                                    };
+        [_channel invokeMethod:@"noty_didUpdateLocation" arguments:arguments1];
         
         _isNotifyLocation= false;
     }
@@ -293,7 +305,7 @@
     if (_isOnlyShow) {return;}
     [_mapView setCenterCoordinate:center animated:YES];
 
-    if (cmps.second > 5) {
+    if (cmps.second > 2) {
         _theDate = [NSDate date];
         NSDictionary* arguments = @{
                                     @"lat" : [NSNumber numberWithDouble:_mapView.centerCoordinate.latitude],
@@ -340,6 +352,9 @@
 
         [self.locationManager stopUpdatingLocation];
 
+
+        
+
         // [self.location location];
         NSLog(@"iOS端收到了 FLutter端 发送的move方法");
         NSString* lat = [call arguments][@"lat"];
@@ -354,6 +369,23 @@
         _pointAnnotation.title = @"打卡地";
         _pointAnnotation.coordinate = center;
         [self->_mapView addAnnotation:_pointAnnotation];
+
+
+
+        if ([[call arguments][@"lat2"] length] > 2) {
+             NSString* lat2 = [call arguments][@"lat2"];
+        NSString* lon2 = [call arguments][@"lon2"];
+        CLLocationCoordinate2D center2;
+        center2.latitude = [lat2 doubleValue];
+        center2.longitude = [lon2 doubleValue];
+
+          MAPointAnnotation *_pointAnnotation2 = [[MAPointAnnotation alloc] init];
+        _pointAnnotation2.title = @"车行";
+        _pointAnnotation2.coordinate = center2;
+        [self->_mapView addAnnotation:_pointAnnotation2];
+
+        }
+
         
         _isOnlyShow = YES;
         

@@ -95,8 +95,9 @@ class AMapMobile2DLimitController extends AMap2DLimitController {
   }
 
   @override
-  Future<void> setCompany(String lat, String lon) async {
-    return _channel
-        .invokeMethod('setCompany', <String, dynamic>{'lat': lat, 'lon': lon});
+  Future<void> setCompany(
+      String lat, String lon, String lat2, String lon2) async {
+    return _channel.invokeMethod('setCompany',
+        <String, dynamic>{'lat': lat, 'lon': lon, 'lat2': lat2, 'lon2': lon2});
   }
 }

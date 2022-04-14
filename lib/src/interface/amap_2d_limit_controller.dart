@@ -6,5 +6,5 @@ abstract class AMap2DLimitController {
 
   Future<void> getRegionsStatus();
 
-  Future<void> setCompany(String lat, String lon);
+  Future<void> setCompany(String lat, String lon, String lat2, String lon2);
 }
